@@ -1,0 +1,1983 @@
+[
+  {
+    "id": "4cc7f8ca-db5d-4295-9fa9-8e3443cfc753",
+    "lat": 48.8584,
+    "lng": 2.2945,
+    "country": "France",
+    "difficulty": "easy"
+  },
+  {
+    "id": "74d575fd-332c-4caa-9303-37f4a656571f",
+    "lat": 48.8606,
+    "lng": 2.3376,
+    "country": "France",
+    "difficulty": "easy"
+  },
+  {
+    "id": "52516e1c-df84-4706-82b4-b4cae5028c43",
+    "lat": 43.2965,
+    "lng": 5.3698,
+    "country": "France",
+    "difficulty": "medium"
+  },
+  {
+    "id": "50519f8b-5bff-4aed-86c5-aa3b48535f7f",
+    "lat": 45.764,
+    "lng": 4.8357,
+    "country": "France",
+    "difficulty": "medium"
+  },
+  {
+    "id": "0918fdf7-f4b0-45a4-9f52-f755603964de",
+    "lat": 43.7102,
+    "lng": 7.262,
+    "country": "France",
+    "difficulty": "easy"
+  },
+  {
+    "id": "4ac5b790-afc0-4ad7-b0a5-cd5fe3aaa717",
+    "lat": 44.8378,
+    "lng": -0.5792,
+    "country": "France",
+    "difficulty": "medium"
+  },
+  {
+    "id": "164def57-b243-4154-a5e1-0eb99a87b0ae",
+    "lat": 48.5831,
+    "lng": 7.7479,
+    "country": "France",
+    "difficulty": "hard"
+  },
+  {
+    "id": "f00746f7-7413-48a8-bb37-71efeb68c860",
+    "lat": 51.5007,
+    "lng": -0.1246,
+    "country": "United Kingdom",
+    "difficulty": "easy"
+  },
+  {
+    "id": "3458aae9-dbf1-4124-8d88-2e871c4b19d5",
+    "lat": 51.5033,
+    "lng": -0.1195,
+    "country": "United Kingdom",
+    "difficulty": "easy"
+  },
+  {
+    "id": "bc0e90a9-ff55-4d33-95f9-c46f37fffcaa",
+    "lat": 55.9486,
+    "lng": -3.1998,
+    "country": "United Kingdom",
+    "difficulty": "easy"
+  },
+  {
+    "id": "f8fc75b8-57aa-41c5-8a37-648788f7c6e2",
+    "lat": 53.4084,
+    "lng": -2.9916,
+    "country": "United Kingdom",
+    "difficulty": "medium"
+  },
+  {
+    "id": "91a760d5-e2ea-4914-9212-ce9ef217be3f",
+    "lat": 51.4545,
+    "lng": -2.5879,
+    "country": "United Kingdom",
+    "difficulty": "medium"
+  },
+  {
+    "id": "b6fab290-c511-470f-81f8-76b69f10700e",
+    "lat": 51.752,
+    "lng": -1.2577,
+    "country": "United Kingdom",
+    "difficulty": "medium"
+  },
+  {
+    "id": "30aa1ba2-80de-43f7-8003-b55e846b35a6",
+    "lat": 52.204,
+    "lng": 0.1218,
+    "country": "United Kingdom",
+    "difficulty": "hard"
+  },
+  {
+    "id": "a88a8299-40b2-468f-bf5a-9808d4494226",
+    "lat": 54.5973,
+    "lng": -5.9301,
+    "country": "United Kingdom",
+    "difficulty": "hard"
+  },
+  {
+    "id": "4f7d4176-e303-4049-94c6-e834cc206f55",
+    "lat": 41.8902,
+    "lng": 12.4922,
+    "country": "Italy",
+    "difficulty": "easy"
+  },
+  {
+    "id": "bb39ec0a-5b07-4ce8-b951-1981be2e9840",
+    "lat": 41.9009,
+    "lng": 12.4833,
+    "country": "Italy",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cc65bf26-0ba9-4ac7-aa4f-bcbb258c9238",
+    "lat": 43.7696,
+    "lng": 11.2558,
+    "country": "Italy",
+    "difficulty": "easy"
+  },
+  {
+    "id": "47a5d147-fa1d-4aa8-a332-6525360f2eef",
+    "lat": 45.434,
+    "lng": 12.338,
+    "country": "Italy",
+    "difficulty": "easy"
+  },
+  {
+    "id": "3cbe9939-9f95-4807-a564-0961736616fa",
+    "lat": 45.4642,
+    "lng": 9.19,
+    "country": "Italy",
+    "difficulty": "medium"
+  },
+  {
+    "id": "7d31cff3-b3a7-4f79-be5b-cac3d9d2d3ae",
+    "lat": 40.8518,
+    "lng": 14.2681,
+    "country": "Italy",
+    "difficulty": "medium"
+  },
+  {
+    "id": "297f3988-6026-4fe5-a93a-b9dee9434e4e",
+    "lat": 45.0703,
+    "lng": 7.6869,
+    "country": "Italy",
+    "difficulty": "hard"
+  },
+  {
+    "id": "54d2d720-1e66-4c15-90f0-7afb9a595ca6",
+    "lat": 38.1157,
+    "lng": 13.3615,
+    "country": "Italy",
+    "difficulty": "hard"
+  },
+  {
+    "id": "9682a4df-91ce-4551-879a-0f23a11f8e05",
+    "lat": 52.5163,
+    "lng": 13.3777,
+    "country": "Germany",
+    "difficulty": "easy"
+  },
+  {
+    "id": "c0681f02-95bb-449d-b109-10c1fa3f73cf",
+    "lat": 48.1351,
+    "lng": 11.582,
+    "country": "Germany",
+    "difficulty": "easy"
+  },
+  {
+    "id": "d637a2ba-bb30-4a28-9bea-68d62d37a164",
+    "lat": 53.5511,
+    "lng": 9.9937,
+    "country": "Germany",
+    "difficulty": "medium"
+  },
+  {
+    "id": "2d5eacc9-39aa-4fe6-abbd-1ecb8f41e2cf",
+    "lat": 50.1109,
+    "lng": 8.6821,
+    "country": "Germany",
+    "difficulty": "medium"
+  },
+  {
+    "id": "3561d207-d16e-4d4e-b755-719977244e31",
+    "lat": 50.9413,
+    "lng": 6.9583,
+    "country": "Germany",
+    "difficulty": "easy"
+  },
+  {
+    "id": "f90f0151-e4d6-44ef-84f7-3117d9a4f22b",
+    "lat": 48.7758,
+    "lng": 9.1829,
+    "country": "Germany",
+    "difficulty": "hard"
+  },
+  {
+    "id": "8e91d4c8-babf-4862-a7c2-e14c81846bad",
+    "lat": 51.0504,
+    "lng": 13.7373,
+    "country": "Germany",
+    "difficulty": "hard"
+  },
+  {
+    "id": "8217c6b2-0273-406a-8df7-92de17ecdb78",
+    "lat": 40.4168,
+    "lng": -3.7038,
+    "country": "Spain",
+    "difficulty": "easy"
+  },
+  {
+    "id": "67881594-2371-4fbf-aaf9-76ebdf8ea1c2",
+    "lat": 41.4036,
+    "lng": 2.1744,
+    "country": "Spain",
+    "difficulty": "easy"
+  },
+  {
+    "id": "3d393cc0-22f3-43d6-9cef-823f50cfb277",
+    "lat": 37.3891,
+    "lng": -5.9845,
+    "country": "Spain",
+    "difficulty": "medium"
+  },
+  {
+    "id": "28810370-2f0b-4023-ace9-35c2841411de",
+    "lat": 39.4699,
+    "lng": -0.3763,
+    "country": "Spain",
+    "difficulty": "medium"
+  },
+  {
+    "id": "1de466c1-7a56-4f89-8692-15dbe4377bb3",
+    "lat": 43.263,
+    "lng": -2.935,
+    "country": "Spain",
+    "difficulty": "hard"
+  },
+  {
+    "id": "c420e75b-1924-4fc3-bd16-dc0bc85ba6d8",
+    "lat": 36.7213,
+    "lng": -4.4214,
+    "country": "Spain",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ceef59d3-3e2f-4e8f-b8d4-2f4469d83553",
+    "lat": 59.9139,
+    "lng": 10.7522,
+    "country": "Norway",
+    "difficulty": "easy"
+  },
+  {
+    "id": "0418fca0-094e-4305-b443-10bc3cf92a71",
+    "lat": 60.3913,
+    "lng": 5.3221,
+    "country": "Norway",
+    "difficulty": "medium"
+  },
+  {
+    "id": "f56ffff8-1d7e-44b6-8469-f70c770da541",
+    "lat": 69.6492,
+    "lng": 18.9553,
+    "country": "Norway",
+    "difficulty": "hard"
+  },
+  {
+    "id": "9051375c-c3b7-4422-89ec-0f481691cb95",
+    "lat": 62.1015,
+    "lng": 7.2066,
+    "country": "Norway",
+    "difficulty": "hard"
+  },
+  {
+    "id": "6df0d525-aecb-438c-9a06-c46e2d35364f",
+    "lat": 64.1466,
+    "lng": -21.9426,
+    "country": "Iceland",
+    "difficulty": "easy"
+  },
+  {
+    "id": "1ac4a3e0-d327-43d7-852a-927b97ee9dc0",
+    "lat": 63.4194,
+    "lng": -19.006,
+    "country": "Iceland",
+    "difficulty": "hard"
+  },
+  {
+    "id": "e9199fc5-775c-483f-b91e-dc37f40eeb0d",
+    "lat": 64.7838,
+    "lng": -20.9789,
+    "country": "Iceland",
+    "difficulty": "hard"
+  },
+  {
+    "id": "c8827b4f-ea79-409a-a3fd-4a3a9a8d1556",
+    "lat": 52.3702,
+    "lng": 4.8952,
+    "country": "Netherlands",
+    "difficulty": "easy"
+  },
+  {
+    "id": "0578877a-3826-4820-996a-8d15b641786b",
+    "lat": 51.9244,
+    "lng": 4.4777,
+    "country": "Netherlands",
+    "difficulty": "medium"
+  },
+  {
+    "id": "4c2adbbc-faa2-49dd-8f0f-c7de48448221",
+    "lat": 52.0907,
+    "lng": 5.1214,
+    "country": "Netherlands",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ab5eb3d1-0a7a-45dc-92ae-79374a58b257",
+    "lat": 47.3769,
+    "lng": 8.5417,
+    "country": "Switzerland",
+    "difficulty": "easy"
+  },
+  {
+    "id": "169daf54-0fd6-4dc2-b995-cd6a5425c124",
+    "lat": 46.2044,
+    "lng": 6.1432,
+    "country": "Switzerland",
+    "difficulty": "medium"
+  },
+  {
+    "id": "24cd80fe-257e-4065-8088-6b3117960bf6",
+    "lat": 45.9763,
+    "lng": 7.6585,
+    "country": "Switzerland",
+    "difficulty": "hard"
+  },
+  {
+    "id": "d5627ed9-6afc-46ca-b398-db7bea699b1c",
+    "lat": 37.9715,
+    "lng": 23.7257,
+    "country": "Greece",
+    "difficulty": "easy"
+  },
+  {
+    "id": "2db346e6-a37e-4fa6-bb32-397de579f9b2",
+    "lat": 36.4618,
+    "lng": 25.3753,
+    "country": "Greece",
+    "difficulty": "medium"
+  },
+  {
+    "id": "03b85ce2-3591-47b2-bd46-2ffde166357b",
+    "lat": 40.758,
+    "lng": -73.9855,
+    "country": "United States",
+    "difficulty": "easy"
+  },
+  {
+    "id": "1f79435c-b6e6-47fa-b87e-bdee49e52eb1",
+    "lat": 37.8199,
+    "lng": -122.4783,
+    "country": "United States",
+    "difficulty": "easy"
+  },
+  {
+    "id": "08328894-9fff-43d2-8c02-5986b70e2650",
+    "lat": 41.8988,
+    "lng": -87.6229,
+    "country": "United States",
+    "difficulty": "easy"
+  },
+  {
+    "id": "41ab2c68-305e-4c8b-b0d1-91596b5d5e56",
+    "lat": 25.7907,
+    "lng": -80.13,
+    "country": "United States",
+    "difficulty": "easy"
+  },
+  {
+    "id": "789e9576-c70c-435d-b9d3-c95640899191",
+    "lat": 36.0544,
+    "lng": -112.1376,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "b3e734c1-429c-43e2-9c1c-474f22e6777c",
+    "lat": 44.428,
+    "lng": -110.5885,
+    "country": "United States",
+    "difficulty": "hard"
+  },
+  {
+    "id": "49ea8488-6ea5-4137-b3f7-5cb9e7e5a9b5",
+    "lat": 47.6062,
+    "lng": -122.3321,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "c0dbfc8a-abc8-4d28-84fd-8bf8e7e3cbf7",
+    "lat": 34.0928,
+    "lng": -118.3287,
+    "country": "United States",
+    "difficulty": "easy"
+  },
+  {
+    "id": "df313665-c4b4-4dc5-8c4d-08f1e97be930",
+    "lat": 36.1147,
+    "lng": -115.1728,
+    "country": "United States",
+    "difficulty": "easy"
+  },
+  {
+    "id": "a2f320e5-e675-4096-b36f-c0e6b711c94b",
+    "lat": 38.9072,
+    "lng": -77.0369,
+    "country": "United States",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cb3cb74e-a5f5-4f80-b9d4-15e50e724702",
+    "lat": 30.2672,
+    "lng": -97.7431,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "47e17c6c-1aed-4bac-8841-d3cfb2a5131b",
+    "lat": 39.7392,
+    "lng": -104.9903,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "f7a3f69f-7065-44a1-b11f-542506dc9ae4",
+    "lat": 45.5152,
+    "lng": -122.6784,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "14a00860-153a-4796-9705-b2f2ee54e480",
+    "lat": 21.2753,
+    "lng": -157.8252,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "be790b70-a4fc-4893-a5b8-98f353b27a2f",
+    "lat": 61.2181,
+    "lng": -149.9003,
+    "country": "United States",
+    "difficulty": "hard"
+  },
+  {
+    "id": "7f7ac0ec-c1c8-41d6-a450-66f16a4ae8fb",
+    "lat": 35.1427,
+    "lng": -118.5284,
+    "country": "United States",
+    "difficulty": "hard"
+  },
+  {
+    "id": "493035c3-3380-4e34-bef3-ffbced870807",
+    "lat": 32.7157,
+    "lng": -117.1611,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "76c028c2-77b9-466e-a1ee-b7d410d32381",
+    "lat": 42.3601,
+    "lng": -71.0589,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "28e329d0-5e2c-4c2b-9dcc-da87eb136587",
+    "lat": 39.9526,
+    "lng": -75.1652,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "f5ff766e-bfbf-4b61-ad61-7c47b0c77144",
+    "lat": 29.9511,
+    "lng": -90.0715,
+    "country": "United States",
+    "difficulty": "easy"
+  },
+  {
+    "id": "93d29e94-a141-4724-be9f-0db57ba0a5f1",
+    "lat": 43.6426,
+    "lng": -79.3871,
+    "country": "Canada",
+    "difficulty": "easy"
+  },
+  {
+    "id": "45500391-59cb-4032-8fef-eeff562971cf",
+    "lat": 49.2827,
+    "lng": -123.1207,
+    "country": "Canada",
+    "difficulty": "easy"
+  },
+  {
+    "id": "81d06b36-c62a-461e-89a6-e7728007bee7",
+    "lat": 45.5017,
+    "lng": -73.5673,
+    "country": "Canada",
+    "difficulty": "medium"
+  },
+  {
+    "id": "062ecb0b-32e2-45da-9e44-2e325f01506a",
+    "lat": 51.0447,
+    "lng": -114.0719,
+    "country": "Canada",
+    "difficulty": "medium"
+  },
+  {
+    "id": "0dafa8f3-701d-4deb-975d-c7115c49b565",
+    "lat": 45.4215,
+    "lng": -75.6972,
+    "country": "Canada",
+    "difficulty": "medium"
+  },
+  {
+    "id": "05489755-401d-471a-88a0-bb93e7721c79",
+    "lat": 46.8139,
+    "lng": -71.208,
+    "country": "Canada",
+    "difficulty": "hard"
+  },
+  {
+    "id": "dc4294c7-9063-46d0-b361-0f9a37d94899",
+    "lat": 53.5461,
+    "lng": -113.4938,
+    "country": "Canada",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cf81e834-ec7c-4af5-8608-ede877126eb4",
+    "lat": 19.4326,
+    "lng": -99.1332,
+    "country": "Mexico",
+    "difficulty": "easy"
+  },
+  {
+    "id": "01205573-0dda-41bf-bf61-731f3dbed34d",
+    "lat": 21.1619,
+    "lng": -86.8515,
+    "country": "Mexico",
+    "difficulty": "medium"
+  },
+  {
+    "id": "b59545a8-0c66-489d-8afc-2b5c9bf82458",
+    "lat": 20.6597,
+    "lng": -103.3496,
+    "country": "Mexico",
+    "difficulty": "hard"
+  },
+  {
+    "id": "7ec62d5e-d6ef-4923-9459-930ae4defbad",
+    "lat": 16.7597,
+    "lng": -99.8821,
+    "country": "Mexico",
+    "difficulty": "hard"
+  },
+  {
+    "id": "2c58e84b-a610-434e-9590-a0712660d2d0",
+    "lat": -22.9519,
+    "lng": -43.2105,
+    "country": "Brazil",
+    "difficulty": "easy"
+  },
+  {
+    "id": "9dd5155c-4361-4d6b-923e-8dcb07bcaf43",
+    "lat": -23.5615,
+    "lng": -46.656,
+    "country": "Brazil",
+    "difficulty": "easy"
+  },
+  {
+    "id": "408aa07d-49cf-4cfe-a6fb-2e77bfc7f7f1",
+    "lat": -15.7975,
+    "lng": -47.8828,
+    "country": "Brazil",
+    "difficulty": "medium"
+  },
+  {
+    "id": "d462ab64-dc47-48ea-b19e-70131494bffa",
+    "lat": -12.9714,
+    "lng": -38.5014,
+    "country": "Brazil",
+    "difficulty": "medium"
+  },
+  {
+    "id": "8c4892c1-62eb-494a-8134-deabfadef275",
+    "lat": -3.7319,
+    "lng": -38.5267,
+    "country": "Brazil",
+    "difficulty": "hard"
+  },
+  {
+    "id": "9b1a48ca-3e90-4ec0-8739-679f5eade9e3",
+    "lat": -3.1019,
+    "lng": -60.025,
+    "country": "Brazil",
+    "difficulty": "hard"
+  },
+  {
+    "id": "e42d3a3f-05a6-4548-80fd-b616bfd74d02",
+    "lat": -25.429,
+    "lng": -49.2671,
+    "country": "Brazil",
+    "difficulty": "hard"
+  },
+  {
+    "id": "d01da388-8744-43cb-b33c-beaa3007cdad",
+    "lat": -34.6037,
+    "lng": -58.3816,
+    "country": "Argentina",
+    "difficulty": "easy"
+  },
+  {
+    "id": "9b41f555-2361-465d-8261-004838406414",
+    "lat": -41.1335,
+    "lng": -71.3103,
+    "country": "Argentina",
+    "difficulty": "hard"
+  },
+  {
+    "id": "4d5ea7fc-77fc-4873-a8a7-7f8301ee4852",
+    "lat": -54.8019,
+    "lng": -68.303,
+    "country": "Argentina",
+    "difficulty": "hard"
+  },
+  {
+    "id": "6d2541b6-f5c0-4cfc-b04c-32baf3932389",
+    "lat": -32.8895,
+    "lng": -68.8458,
+    "country": "Argentina",
+    "difficulty": "hard"
+  },
+  {
+    "id": "14d97db9-a2a9-4725-93f6-5185c6fc5033",
+    "lat": -33.4372,
+    "lng": -70.6506,
+    "country": "Chile",
+    "difficulty": "easy"
+  },
+  {
+    "id": "32fe4274-e5b5-49f9-b2e2-69713bd41165",
+    "lat": -33.0472,
+    "lng": -71.6127,
+    "country": "Chile",
+    "difficulty": "medium"
+  },
+  {
+    "id": "7b2a45f4-e2f7-4a5d-b5a4-790072e9e495",
+    "lat": -53.1638,
+    "lng": -70.9171,
+    "country": "Chile",
+    "difficulty": "hard"
+  },
+  {
+    "id": "7c4b60c0-3e10-42a8-a417-b1cd9b160503",
+    "lat": -12.0464,
+    "lng": -77.0298,
+    "country": "Peru",
+    "difficulty": "easy"
+  },
+  {
+    "id": "5a2f7a60-1cc3-4db4-bf50-3e744b0f709a",
+    "lat": -13.5168,
+    "lng": -71.9786,
+    "country": "Peru",
+    "difficulty": "medium"
+  },
+  {
+    "id": "541ad660-e35d-489f-a764-ac1297f839ba",
+    "lat": -16.3989,
+    "lng": -71.5369,
+    "country": "Peru",
+    "difficulty": "hard"
+  },
+  {
+    "id": "6d9369d4-df6a-4998-84d8-17911dd76fcf",
+    "lat": 4.5981,
+    "lng": -74.076,
+    "country": "Colombia",
+    "difficulty": "easy"
+  },
+  {
+    "id": "01733eea-6120-4022-8c82-e83a1690853d",
+    "lat": 6.2442,
+    "lng": -75.5698,
+    "country": "Colombia",
+    "difficulty": "medium"
+  },
+  {
+    "id": "c4ebcb78-427c-4a5e-b80d-4002e9484aac",
+    "lat": 10.3997,
+    "lng": -75.5144,
+    "country": "Colombia",
+    "difficulty": "hard"
+  },
+  {
+    "id": "13c87551-8fcc-4e45-b181-c77a893b2c7c",
+    "lat": 35.6586,
+    "lng": 139.7454,
+    "country": "Japan",
+    "difficulty": "easy"
+  },
+  {
+    "id": "5a0832f3-7b82-422f-80a3-2f0ebb1f1ca8",
+    "lat": 35.6895,
+    "lng": 139.6917,
+    "country": "Japan",
+    "difficulty": "easy"
+  },
+  {
+    "id": "c8525047-3ad5-4fb4-adca-b4ee397baeeb",
+    "lat": 35.0116,
+    "lng": 135.7681,
+    "country": "Japan",
+    "difficulty": "medium"
+  },
+  {
+    "id": "095c42e3-cdbf-4328-866e-17fa765408fe",
+    "lat": 34.6937,
+    "lng": 135.5023,
+    "country": "Japan",
+    "difficulty": "medium"
+  },
+  {
+    "id": "2e11e0ed-5652-4a51-8903-ad61eba28d52",
+    "lat": 43.0621,
+    "lng": 141.3544,
+    "country": "Japan",
+    "difficulty": "medium"
+  },
+  {
+    "id": "3c5a82cf-95c8-4d5d-813b-b9bd604ba46f",
+    "lat": 34.3976,
+    "lng": 132.4594,
+    "country": "Japan",
+    "difficulty": "hard"
+  },
+  {
+    "id": "8d64f9b6-d372-429b-a6ac-803a4ac165f2",
+    "lat": 33.5904,
+    "lng": 130.4017,
+    "country": "Japan",
+    "difficulty": "hard"
+  },
+  {
+    "id": "281afb0a-3969-4ec5-a854-a17ba6112eb5",
+    "lat": 35.1815,
+    "lng": 136.9066,
+    "country": "Japan",
+    "difficulty": "hard"
+  },
+  {
+    "id": "d732b413-a962-42c5-a0bf-a371476e1c3a",
+    "lat": 26.2124,
+    "lng": 127.6809,
+    "country": "Japan",
+    "difficulty": "hard"
+  },
+  {
+    "id": "bcbac059-4895-45ca-be06-9f7995502ba1",
+    "lat": 37.5665,
+    "lng": 126.978,
+    "country": "South Korea",
+    "difficulty": "easy"
+  },
+  {
+    "id": "37adde0a-fe1f-42c1-96f4-130383abd7a2",
+    "lat": 37.5796,
+    "lng": 126.977,
+    "country": "South Korea",
+    "difficulty": "easy"
+  },
+  {
+    "id": "f871aa9e-1f5b-484c-ac90-9f41c27aeea0",
+    "lat": 35.1796,
+    "lng": 129.0756,
+    "country": "South Korea",
+    "difficulty": "medium"
+  },
+  {
+    "id": "8a4570f6-c8a4-4652-83b5-7fdcea73a813",
+    "lat": 33.4996,
+    "lng": 126.5312,
+    "country": "South Korea",
+    "difficulty": "hard"
+  },
+  {
+    "id": "a667769d-e594-4498-a7af-43a8588deaf1",
+    "lat": 37.4563,
+    "lng": 126.7052,
+    "country": "South Korea",
+    "difficulty": "hard"
+  },
+  {
+    "id": "36d68dbb-188f-431a-88cc-5ac1222dcf40",
+    "lat": 27.1751,
+    "lng": 78.0421,
+    "country": "India",
+    "difficulty": "easy"
+  },
+  {
+    "id": "104beb4a-0a3c-4006-885d-f472d795cb97",
+    "lat": 28.6129,
+    "lng": 77.2295,
+    "country": "India",
+    "difficulty": "easy"
+  },
+  {
+    "id": "3eb3dab5-15b5-4d85-8992-ad4fac58e864",
+    "lat": 18.922,
+    "lng": 72.8347,
+    "country": "India",
+    "difficulty": "medium"
+  },
+  {
+    "id": "e3309785-bb9f-4f3a-89a7-7ad160b627ed",
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "country": "India",
+    "difficulty": "hard"
+  },
+  {
+    "id": "e7431a6a-2b2f-48dc-8eea-f9bc83bccdec",
+    "lat": 26.9124,
+    "lng": 75.7873,
+    "country": "India",
+    "difficulty": "hard"
+  },
+  {
+    "id": "14d017da-85d0-496a-ab29-b53b03341dbe",
+    "lat": 1.2868,
+    "lng": 103.8545,
+    "country": "Singapore",
+    "difficulty": "easy"
+  },
+  {
+    "id": "bafd2e5d-f928-4264-8f74-2fad6aeeea3c",
+    "lat": 1.2816,
+    "lng": 103.8636,
+    "country": "Singapore",
+    "difficulty": "easy"
+  },
+  {
+    "id": "76f7d574-42ac-4b83-b8dd-94bd846a07c9",
+    "lat": 1.3003,
+    "lng": 103.8377,
+    "country": "Singapore",
+    "difficulty": "medium"
+  },
+  {
+    "id": "a67adfbe-d4f4-40f4-8309-b7c0106454ea",
+    "lat": 13.7563,
+    "lng": 100.5018,
+    "country": "Thailand",
+    "difficulty": "easy"
+  },
+  {
+    "id": "0ca0ea9b-6229-4908-b0a3-1a15c82ee754",
+    "lat": 7.8881,
+    "lng": 98.3975,
+    "country": "Thailand",
+    "difficulty": "medium"
+  },
+  {
+    "id": "3ae76351-ae7e-4a10-acfc-c824820ff825",
+    "lat": 18.7883,
+    "lng": 98.9853,
+    "country": "Thailand",
+    "difficulty": "hard"
+  },
+  {
+    "id": "03b6e2d3-8f82-4f49-85c9-40c5de08da21",
+    "lat": 25.033,
+    "lng": 121.5654,
+    "country": "Taiwan",
+    "difficulty": "easy"
+  },
+  {
+    "id": "2d1257fe-02ac-4336-99d2-78fc02583b9d",
+    "lat": 25.036,
+    "lng": 121.517,
+    "country": "Taiwan",
+    "difficulty": "medium"
+  },
+  {
+    "id": "f517801f-5e04-4244-9baf-e336b6b58371",
+    "lat": 22.6273,
+    "lng": 120.3014,
+    "country": "Taiwan",
+    "difficulty": "hard"
+  },
+  {
+    "id": "b9a04b90-ed3b-4dd2-88f5-34fe0ae8144b",
+    "lat": -6.1754,
+    "lng": 106.8272,
+    "country": "Indonesia",
+    "difficulty": "easy"
+  },
+  {
+    "id": "84576519-e63b-4538-83cb-caa3783d475c",
+    "lat": -8.65,
+    "lng": 115.2167,
+    "country": "Indonesia",
+    "difficulty": "medium"
+  },
+  {
+    "id": "15c407fd-8eb4-4261-a19c-80e7a14d4854",
+    "lat": -7.7971,
+    "lng": 110.3705,
+    "country": "Indonesia",
+    "difficulty": "hard"
+  },
+  {
+    "id": "060b33b2-c756-464a-8092-14ee5aae2c84",
+    "lat": -33.9249,
+    "lng": 18.4241,
+    "country": "South Africa",
+    "difficulty": "easy"
+  },
+  {
+    "id": "75277729-8cb5-42fb-9bad-956f73c64dee",
+    "lat": -26.2041,
+    "lng": 28.0473,
+    "country": "South Africa",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cab5e67c-db17-43fb-bdda-9d9674c842da",
+    "lat": -29.8587,
+    "lng": 31.0218,
+    "country": "South Africa",
+    "difficulty": "hard"
+  },
+  {
+    "id": "dcee09cf-71a9-4af8-a1d0-74efa18c1c21",
+    "lat": -25.7479,
+    "lng": 28.2293,
+    "country": "South Africa",
+    "difficulty": "hard"
+  },
+  {
+    "id": "796530fb-50c8-4d3a-b056-ad5182ed1bdf",
+    "lat": 29.9792,
+    "lng": 31.1342,
+    "country": "Egypt",
+    "difficulty": "easy"
+  },
+  {
+    "id": "616fb612-f059-48c4-a2bf-c38a35fe7d8f",
+    "lat": 30.0444,
+    "lng": 31.2357,
+    "country": "Egypt",
+    "difficulty": "medium"
+  },
+  {
+    "id": "54a19e81-09af-4dd9-b3af-a1700a5a1669",
+    "lat": 31.2001,
+    "lng": 29.9187,
+    "country": "Egypt",
+    "difficulty": "hard"
+  },
+  {
+    "id": "4dd7d9fa-b467-481b-b86b-c0f8ae1d679d",
+    "lat": 31.6295,
+    "lng": -7.9811,
+    "country": "Morocco",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ba9bcf1b-e1c3-4785-b9ee-40208f3064b9",
+    "lat": 33.5892,
+    "lng": -7.6031,
+    "country": "Morocco",
+    "difficulty": "medium"
+  },
+  {
+    "id": "7a9766fb-1fbf-4872-91a7-6b0c4910a237",
+    "lat": 34.0209,
+    "lng": -6.8416,
+    "country": "Morocco",
+    "difficulty": "hard"
+  },
+  {
+    "id": "10f84e9c-c381-41b0-869f-07cc89da8578",
+    "lat": -1.2921,
+    "lng": 36.8219,
+    "country": "Kenya",
+    "difficulty": "easy"
+  },
+  {
+    "id": "bcd5ecf8-9f4a-4a55-874c-f45032f06dda",
+    "lat": -4.0435,
+    "lng": 39.6682,
+    "country": "Kenya",
+    "difficulty": "hard"
+  },
+  {
+    "id": "2b8ab04d-0674-4c55-a065-96f469a52f49",
+    "lat": -33.8568,
+    "lng": 151.2153,
+    "country": "Australia",
+    "difficulty": "easy"
+  },
+  {
+    "id": "07d84b5e-8f8c-4ad3-8a40-3a9a45974aef",
+    "lat": -33.8732,
+    "lng": 151.2069,
+    "country": "Australia",
+    "difficulty": "easy"
+  },
+  {
+    "id": "d017a603-9052-40ef-b969-9f71b618ce56",
+    "lat": -37.8174,
+    "lng": 144.9678,
+    "country": "Australia",
+    "difficulty": "easy"
+  },
+  {
+    "id": "5ca8d356-8669-4ea1-8e3e-382aff991d8b",
+    "lat": -27.4709,
+    "lng": 153.0235,
+    "country": "Australia",
+    "difficulty": "medium"
+  },
+  {
+    "id": "bdbbb133-b99c-4e64-9d49-360be8fb4876",
+    "lat": -31.9505,
+    "lng": 115.8605,
+    "country": "Australia",
+    "difficulty": "medium"
+  },
+  {
+    "id": "8d115c49-4571-445b-b67a-d602120c8c35",
+    "lat": -34.9285,
+    "lng": 138.6007,
+    "country": "Australia",
+    "difficulty": "medium"
+  },
+  {
+    "id": "c6e0bf65-e5c0-48f5-a506-bfe718b1f05a",
+    "lat": -42.8821,
+    "lng": 147.3272,
+    "country": "Australia",
+    "difficulty": "hard"
+  },
+  {
+    "id": "448363de-b738-4b11-8686-ec25db862606",
+    "lat": -35.2809,
+    "lng": 149.13,
+    "country": "Australia",
+    "difficulty": "hard"
+  },
+  {
+    "id": "6c01ba7e-eb1a-4efc-a315-52ba9aba0655",
+    "lat": -38.6805,
+    "lng": 143.1047,
+    "country": "Australia",
+    "difficulty": "hard"
+  },
+  {
+    "id": "2dfbd6f7-948e-4812-a252-8d045d8c38e5",
+    "lat": -12.4634,
+    "lng": 130.8456,
+    "country": "Australia",
+    "difficulty": "hard"
+  },
+  {
+    "id": "342a5082-ec77-4651-8df4-fe5ae1786c4a",
+    "lat": -31.9961,
+    "lng": 115.8844,
+    "country": "Australia",
+    "difficulty": "hard"
+  },
+  {
+    "id": "95899161-6ac1-4414-8fa1-7b5a567defc4",
+    "lat": -23.698,
+    "lng": 133.8807,
+    "country": "Australia",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ca3765ef-cc02-4445-8b89-6d926cc21b25",
+    "lat": -36.8485,
+    "lng": 174.7633,
+    "country": "New Zealand",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e932afd4-2993-4778-b6ff-817ca80063f0",
+    "lat": -41.2865,
+    "lng": 174.7762,
+    "country": "New Zealand",
+    "difficulty": "medium"
+  },
+  {
+    "id": "398ef3b9-0c4b-479e-afee-9e4a3155af15",
+    "lat": -43.5321,
+    "lng": 172.6362,
+    "country": "New Zealand",
+    "difficulty": "medium"
+  },
+  {
+    "id": "94ca04a0-7355-4371-afdc-480822072ad4",
+    "lat": -45.0312,
+    "lng": 168.6626,
+    "country": "New Zealand",
+    "difficulty": "hard"
+  },
+  {
+    "id": "96b0c30d-b252-40e6-b5d7-8cd0d4c6b777",
+    "lat": -38.1368,
+    "lng": 176.2497,
+    "country": "New Zealand",
+    "difficulty": "hard"
+  },
+  {
+    "id": "66422fcd-1326-4ede-9fad-e1ed5aab5dcd",
+    "lat": -37.6878,
+    "lng": 176.1651,
+    "country": "New Zealand",
+    "difficulty": "hard"
+  },
+  {
+    "id": "153c44cb-ac2e-4c73-ba2a-31c91aad611a",
+    "lat": 42.3314,
+    "lng": -83.0458,
+    "country": "United States",
+    "difficulty": "hard"
+  },
+  {
+    "id": "0c12b8de-4697-4630-814b-e71acc18dab2",
+    "lat": 32.7767,
+    "lng": -96.797,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "f585bf6c-2f7c-4da7-a658-124fedd3e598",
+    "lat": 33.749,
+    "lng": -84.388,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "360f5ce2-3d46-4e6d-b629-67574b9da761",
+    "lat": 29.7604,
+    "lng": -95.3698,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "0c334a13-5c3a-4383-abae-18e4dea73e17",
+    "lat": 39.2904,
+    "lng": -76.6122,
+    "country": "United States",
+    "difficulty": "hard"
+  },
+  {
+    "id": "8d125ce3-92dd-440f-9784-2948f2fe05a3",
+    "lat": 36.1627,
+    "lng": -86.7816,
+    "country": "United States",
+    "difficulty": "easy"
+  },
+  {
+    "id": "a9119b1b-358c-4fd1-9986-7f63b95c86f3",
+    "lat": 33.4484,
+    "lng": -112.074,
+    "country": "United States",
+    "difficulty": "hard"
+  },
+  {
+    "id": "66a6efd0-3dd2-4d9d-a5bf-90a630146fdd",
+    "lat": 38.2527,
+    "lng": -85.7585,
+    "country": "United States",
+    "difficulty": "hard"
+  },
+  {
+    "id": "41576c59-94b1-4f97-a49f-bb205e1a3358",
+    "lat": 40.4406,
+    "lng": -79.9959,
+    "country": "United States",
+    "difficulty": "hard"
+  },
+  {
+    "id": "f47357ed-62b3-4687-add5-ea27bbcf57c2",
+    "lat": 49.8951,
+    "lng": -97.1384,
+    "country": "Canada",
+    "difficulty": "hard"
+  },
+  {
+    "id": "a55e2869-0918-44e5-b8b7-3b6f66e6a455",
+    "lat": 48.4284,
+    "lng": -123.3656,
+    "country": "Canada",
+    "difficulty": "medium"
+  },
+  {
+    "id": "88dc5add-8a2b-478f-be5e-be7c51604c60",
+    "lat": 47.5615,
+    "lng": -52.7126,
+    "country": "Canada",
+    "difficulty": "hard"
+  },
+  {
+    "id": "4fd3a1fd-7f58-492b-918d-0cffd5a5f284",
+    "lat": 53.4808,
+    "lng": -2.2426,
+    "country": "United Kingdom",
+    "difficulty": "medium"
+  },
+  {
+    "id": "e827a567-5c3c-4bae-b943-45ab684d970b",
+    "lat": 54.9783,
+    "lng": -1.6178,
+    "country": "United Kingdom",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cd5e3561-9402-4bc2-9d97-2346c22f2b22",
+    "lat": 50.8225,
+    "lng": -0.1372,
+    "country": "United Kingdom",
+    "difficulty": "medium"
+  },
+  {
+    "id": "b1507d58-b3d6-44ab-b4f6-0726c6c23a50",
+    "lat": 47.2184,
+    "lng": -1.5536,
+    "country": "France",
+    "difficulty": "hard"
+  },
+  {
+    "id": "d4a4b608-d365-4454-bec7-40f904d60369",
+    "lat": 43.6047,
+    "lng": 1.4442,
+    "country": "France",
+    "difficulty": "medium"
+  },
+  {
+    "id": "7a8e346b-3c36-446f-8350-db90ba3b2f26",
+    "lat": 50.6292,
+    "lng": 3.0573,
+    "country": "France",
+    "difficulty": "hard"
+  },
+  {
+    "id": "82e6ad15-4ccd-4559-a5c5-15fae6420785",
+    "lat": 53.0793,
+    "lng": 8.8017,
+    "country": "Germany",
+    "difficulty": "hard"
+  },
+  {
+    "id": "96c76e4f-188b-4300-9c5e-09c5b6c072c3",
+    "lat": 50.1211,
+    "lng": 8.5447,
+    "country": "Germany",
+    "difficulty": "hard"
+  },
+  {
+    "id": "5ddfb95a-608c-4476-a5a8-276d4c2d38c1",
+    "lat": 54.3233,
+    "lng": 10.1228,
+    "country": "Germany",
+    "difficulty": "hard"
+  },
+  {
+    "id": "777d845a-4342-47d2-be14-a745221b91f1",
+    "lat": 43.7167,
+    "lng": 10.4,
+    "country": "Italy",
+    "difficulty": "easy"
+  },
+  {
+    "id": "3645575b-7c56-4502-98c5-540557c8cf7c",
+    "lat": 40.712,
+    "lng": 13.9,
+    "country": "Italy",
+    "difficulty": "hard"
+  },
+  {
+    "id": "3c4b55ac-04b2-4dd9-b9f1-86a7ec89a07b",
+    "lat": 37.5024,
+    "lng": 15.0873,
+    "country": "Italy",
+    "difficulty": "hard"
+  },
+  {
+    "id": "c1a45e7e-8ef8-4e17-86ad-ace56255f0af",
+    "lat": 35.1709,
+    "lng": 136.8815,
+    "country": "Japan",
+    "difficulty": "medium"
+  },
+  {
+    "id": "47433e7d-9cdd-4ad7-b34d-eb1babfc53b4",
+    "lat": 35.443,
+    "lng": 139.638,
+    "country": "Japan",
+    "difficulty": "medium"
+  },
+  {
+    "id": "faa15c1d-abc9-4039-8f55-ef41722827b3",
+    "lat": 43.7706,
+    "lng": 142.3648,
+    "country": "Japan",
+    "difficulty": "hard"
+  },
+  {
+    "id": "22da0157-2acf-44db-9480-5c9d830b255a",
+    "lat": -27.9626,
+    "lng": 153.4158,
+    "country": "Australia",
+    "difficulty": "medium"
+  },
+  {
+    "id": "daeb7090-6389-4d8f-a3e7-56a82fd092cc",
+    "lat": -32.9283,
+    "lng": 151.7817,
+    "country": "Australia",
+    "difficulty": "hard"
+  },
+  {
+    "id": "75188ae2-8270-40e8-88dd-b606ab9b02d8",
+    "lat": -19.259,
+    "lng": 146.8169,
+    "country": "Australia",
+    "difficulty": "hard"
+  },
+  {
+    "id": "1cc1b414-1f00-4220-aea0-cced1dea7828",
+    "lat": -34.9011,
+    "lng": -56.1915,
+    "country": "Uruguay",
+    "difficulty": "medium"
+  },
+  {
+    "id": "f2ce2ed4-4463-435b-ad6d-569aad158f4e",
+    "lat": -16.5001,
+    "lng": -68.15,
+    "country": "Bolivia",
+    "difficulty": "hard"
+  },
+  {
+    "id": "61578d88-aa5e-4f85-927d-5c55433c92f2",
+    "lat": -0.1807,
+    "lng": -78.4678,
+    "country": "Ecuador",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ccce9c3a-6ce4-4724-8f14-f4094639578f",
+    "lat": 50.8503,
+    "lng": 4.3517,
+    "country": "Belgium",
+    "difficulty": "easy"
+  },
+  {
+    "id": "1401cad8-83e8-4e9c-a4e3-45339d1f962c",
+    "lat": 51.2094,
+    "lng": 3.2247,
+    "country": "Belgium",
+    "difficulty": "medium"
+  },
+  {
+    "id": "9d833899-42f8-4c0c-b99a-e61c6068ff85",
+    "lat": 48.2082,
+    "lng": 16.3738,
+    "country": "Austria",
+    "difficulty": "easy"
+  },
+  {
+    "id": "b09a8bb5-cbb4-4496-bbcb-366996ae89c3",
+    "lat": 47.8095,
+    "lng": 13.055,
+    "country": "Austria",
+    "difficulty": "medium"
+  },
+  {
+    "id": "7b3401b9-2d5d-4056-abc3-1eb7e434393b",
+    "lat": 59.3293,
+    "lng": 18.0686,
+    "country": "Sweden",
+    "difficulty": "easy"
+  },
+  {
+    "id": "77fd391d-8b73-4047-9e04-00aa4c32bee5",
+    "lat": 57.7089,
+    "lng": 11.9746,
+    "country": "Sweden",
+    "difficulty": "medium"
+  },
+  {
+    "id": "4434599d-bca9-4d63-b3a1-3b0cde6d67df",
+    "lat": 55.6761,
+    "lng": 12.5683,
+    "country": "Denmark",
+    "difficulty": "easy"
+  },
+  {
+    "id": "fe72810b-5466-4089-b5f1-f903c40fb63f",
+    "lat": 50.088,
+    "lng": 14.4208,
+    "country": "Czech Republic",
+    "difficulty": "easy"
+  },
+  {
+    "id": "2652f51f-fda4-4bf8-870f-546d33e01cdf",
+    "lat": 47.4979,
+    "lng": 19.0402,
+    "country": "Hungary",
+    "difficulty": "easy"
+  },
+  {
+    "id": "6eb8491a-f3a3-4625-a4fc-30633dec5b0a",
+    "lat": 52.2297,
+    "lng": 21.0122,
+    "country": "Poland",
+    "difficulty": "medium"
+  },
+  {
+    "id": "c810cba6-0a79-4302-b4a4-c5c73ccd308d",
+    "lat": 50.0647,
+    "lng": 19.945,
+    "country": "Poland",
+    "difficulty": "medium"
+  },
+  {
+    "id": "968bbc6d-7d8e-4e42-9705-6a9cb54700e9",
+    "lat": 38.7223,
+    "lng": -9.1393,
+    "country": "Portugal",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e2c6359d-00f6-4675-a140-42f5f59023c0",
+    "lat": 41.1579,
+    "lng": -8.6291,
+    "country": "Portugal",
+    "difficulty": "medium"
+  },
+  {
+    "id": "bcf246ea-7e26-43e7-a9f9-3e940c1435b5",
+    "lat": 44.4268,
+    "lng": 26.1025,
+    "country": "Romania",
+    "difficulty": "hard"
+  },
+  {
+    "id": "8f3e7e9e-ab84-4b90-bfa1-8061f6830e4d",
+    "lat": 41.0082,
+    "lng": 28.9784,
+    "country": "Turkey",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cf26436d-17f7-48f0-b2ce-23f724aff1d9",
+    "lat": 39.9334,
+    "lng": 32.8597,
+    "country": "Turkey",
+    "difficulty": "medium"
+  },
+  {
+    "id": "1f0f2d06-fc71-4737-a0c4-71658fd3eaf8",
+    "lat": 38.4192,
+    "lng": 27.1287,
+    "country": "Turkey",
+    "difficulty": "hard"
+  },
+  {
+    "id": "d195b0b3-88a0-42ad-909b-d9711f4c89a6",
+    "lat": 35.1558,
+    "lng": 33.3613,
+    "country": "Cyprus",
+    "difficulty": "hard"
+  },
+  {
+    "id": "f50c561f-3479-4476-af4a-2b37a1cf1569",
+    "lat": 35.9042,
+    "lng": 14.5189,
+    "country": "Malta",
+    "difficulty": "medium"
+  },
+  {
+    "id": "c8b5b56c-7ab9-4206-b3e7-73d66d961f3e",
+    "lat": 22.3964,
+    "lng": 114.1095,
+    "country": "Hong Kong",
+    "difficulty": "easy"
+  },
+  {
+    "id": "c72d2142-aea2-4ef9-8cb0-08d64f8a207c",
+    "lat": 3.139,
+    "lng": 101.6869,
+    "country": "Malaysia",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cdd4d73e-e8a0-4a3c-9c46-3b6f54094cfc",
+    "lat": 14.5995,
+    "lng": 120.9842,
+    "country": "Philippines",
+    "difficulty": "medium"
+  },
+  {
+    "id": "e1c932a2-6519-4c7b-b3ec-d9ec1b021daa",
+    "lat": 10.7769,
+    "lng": 106.7009,
+    "country": "Vietnam",
+    "difficulty": "medium"
+  },
+  {
+    "id": "7c23979d-23e0-4ac4-90a8-91960a082508",
+    "lat": 21.0285,
+    "lng": 105.8542,
+    "country": "Vietnam",
+    "difficulty": "hard"
+  },
+  {
+    "id": "07c620fe-5842-40aa-9778-ca7d3f121bd8",
+    "lat": 6.9271,
+    "lng": 79.8612,
+    "country": "Sri Lanka",
+    "difficulty": "hard"
+  },
+  {
+    "id": "4fb7d130-b1f0-4499-b844-9f5ba9460387",
+    "lat": 25.2048,
+    "lng": 55.2708,
+    "country": "United Arab Emirates",
+    "difficulty": "easy"
+  },
+  {
+    "id": "3dfecc70-9cfa-45e5-b6bb-78d74d907c03",
+    "lat": 24.4539,
+    "lng": 54.3773,
+    "country": "United Arab Emirates",
+    "difficulty": "medium"
+  },
+  {
+    "id": "0970a5d7-3c66-4066-bfa6-09fac94126a0",
+    "lat": 31.7683,
+    "lng": 35.2137,
+    "country": "Israel",
+    "difficulty": "medium"
+  },
+  {
+    "id": "1b6d349d-d11b-44a1-b61b-ec141c1979d3",
+    "lat": 32.0853,
+    "lng": 34.7818,
+    "country": "Israel",
+    "difficulty": "medium"
+  },
+  {
+    "id": "fc0c94bf-5c72-43e5-98e0-b3eccd27dc24",
+    "lat": 45.815,
+    "lng": 15.9819,
+    "country": "Croatia",
+    "difficulty": "medium"
+  },
+  {
+    "id": "c7c87e7e-8460-4cfe-b552-dcc22f68a1ef",
+    "lat": 42.6507,
+    "lng": 18.0944,
+    "country": "Croatia",
+    "difficulty": "easy"
+  },
+  {
+    "id": "dae74900-5936-4736-97d6-ca7e9a36d44e",
+    "lat": 53.3498,
+    "lng": -6.2603,
+    "country": "Ireland",
+    "difficulty": "easy"
+  },
+  {
+    "id": "b6fa660f-4ac8-4829-a37f-5b1d67539258",
+    "lat": 51.8985,
+    "lng": -8.4758,
+    "country": "Ireland",
+    "difficulty": "medium"
+  },
+  {
+    "id": "3099e89b-5489-48be-a7da-dd7ca6b84dcb",
+    "lat": 60.1699,
+    "lng": 24.9384,
+    "country": "Finland",
+    "difficulty": "easy"
+  },
+  {
+    "id": "510ae19e-3c68-4653-8ae5-f4ec6c67ac2f",
+    "lat": 60.4518,
+    "lng": 22.2666,
+    "country": "Finland",
+    "difficulty": "hard"
+  },
+  {
+    "id": "65382c97-8d5e-4bc6-a114-d49ceb5f1394",
+    "lat": 59.437,
+    "lng": 24.7536,
+    "country": "Estonia",
+    "difficulty": "medium"
+  },
+  {
+    "id": "3371e269-7c0c-43e3-aed2-8e99354716c3",
+    "lat": 56.9496,
+    "lng": 24.1052,
+    "country": "Latvia",
+    "difficulty": "medium"
+  },
+  {
+    "id": "54ef0649-69b0-474d-ba18-61898144714d",
+    "lat": 54.6872,
+    "lng": 25.2797,
+    "country": "Lithuania",
+    "difficulty": "medium"
+  },
+  {
+    "id": "e4dfc6aa-f4b8-4bed-8a65-58993898c007",
+    "lat": 48.1486,
+    "lng": 17.1077,
+    "country": "Slovakia",
+    "difficulty": "medium"
+  },
+  {
+    "id": "f5d8d76d-2c1d-484a-a027-87cc2b9fe268",
+    "lat": 46.5588,
+    "lng": 8.5645,
+    "country": "Switzerland",
+    "difficulty": "hard"
+  },
+  {
+    "id": "64c3492b-a54f-4c78-b336-523ad164f30a",
+    "lat": 46.5283,
+    "lng": 8.0167,
+    "country": "Switzerland",
+    "difficulty": "hard"
+  },
+  {
+    "id": "3ab96f66-ff73-412a-9343-5893110a6d4f",
+    "lat": 40.634,
+    "lng": 14.6027,
+    "country": "Italy",
+    "difficulty": "hard"
+  },
+  {
+    "id": "26f7ebf8-d666-4bb4-843f-9d2df127bd24",
+    "lat": 43.8015,
+    "lng": 7.7761,
+    "country": "Italy",
+    "difficulty": "hard"
+  },
+  {
+    "id": "0b7f51cf-07d7-4ad1-b70f-bb04cafa7a94",
+    "lat": 47.4116,
+    "lng": 0.985,
+    "country": "France",
+    "difficulty": "hard"
+  },
+  {
+    "id": "9f6b5378-7790-4598-904d-d58ddd40b316",
+    "lat": 43.9589,
+    "lng": 4.806,
+    "country": "France",
+    "difficulty": "hard"
+  },
+  {
+    "id": "2108726e-0b66-41ab-ae19-6c07fc507714",
+    "lat": 39.5696,
+    "lng": 2.6502,
+    "country": "Spain",
+    "difficulty": "medium"
+  },
+  {
+    "id": "5c2d99de-ed59-420d-b93d-a753f419a73a",
+    "lat": 28.4682,
+    "lng": -16.2546,
+    "country": "Spain",
+    "difficulty": "hard"
+  },
+  {
+    "id": "09975a14-013f-428a-b59c-067551b8f94b",
+    "lat": 34.2257,
+    "lng": -118.4682,
+    "country": "United States",
+    "difficulty": "hard"
+  },
+  {
+    "id": "09ff61e6-7d97-422c-bb42-4a99a7f32e84",
+    "lat": 36.6002,
+    "lng": -121.8947,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "8893e780-922e-4752-86e8-87576917b4d7",
+    "lat": 35.6128,
+    "lng": -83.5186,
+    "country": "United States",
+    "difficulty": "hard"
+  },
+  {
+    "id": "16d0193c-29a4-4f91-95eb-c8cdcd41e466",
+    "lat": 33.8121,
+    "lng": -117.919,
+    "country": "United States",
+    "difficulty": "easy"
+  },
+  {
+    "id": "429a2728-d5bb-4a67-b44d-42051548b74c",
+    "lat": 28.5383,
+    "lng": -81.3792,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "c8efccb6-9789-40c7-a396-ff688ad0a2a6",
+    "lat": 44.3386,
+    "lng": -68.2733,
+    "country": "United States",
+    "difficulty": "hard"
+  },
+  {
+    "id": "f27d4480-faa9-40a5-abbb-a6b369275fa7",
+    "lat": 38.627,
+    "lng": -90.1994,
+    "country": "United States",
+    "difficulty": "easy"
+  },
+  {
+    "id": "62afb949-cff4-4445-9172-aa79beedd65d",
+    "lat": 39.0997,
+    "lng": -94.5786,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "b5c250b3-ae66-4480-a504-fdae0da2ccf1",
+    "lat": 35.4676,
+    "lng": -97.5164,
+    "country": "United States",
+    "difficulty": "hard"
+  },
+  {
+    "id": "63cb5126-9e96-4eaf-b3b4-a0f4e2f81849",
+    "lat": 40.7608,
+    "lng": -111.891,
+    "country": "United States",
+    "difficulty": "medium"
+  },
+  {
+    "id": "51d4ff05-6449-4c9e-bb5f-5336e51f6fbc",
+    "lat": 20.8783,
+    "lng": -156.6825,
+    "country": "United States",
+    "difficulty": "hard"
+  },
+  {
+    "id": "f11773c2-d9ed-480c-933e-8b92375fb3f3",
+    "lat": 43.0389,
+    "lng": -87.9065,
+    "country": "United States",
+    "difficulty": "hard"
+  },
+  {
+    "id": "9ca80530-c02e-436d-ad59-9e4a4d8845fe",
+    "lat": 36.5613,
+    "lng": 136.6562,
+    "country": "Japan",
+    "difficulty": "hard"
+  },
+  {
+    "id": "7ebdfda9-94bd-4153-84bd-d7f6efc743ed",
+    "lat": 34.6851,
+    "lng": 135.1955,
+    "country": "Japan",
+    "difficulty": "medium"
+  },
+  {
+    "id": "75fcb17a-38fd-4397-b76f-97a303ed8ab0",
+    "lat": 33.8392,
+    "lng": 132.7656,
+    "country": "Japan",
+    "difficulty": "hard"
+  },
+  {
+    "id": "61955d0f-8181-4a03-9aa7-9a72572e84bc",
+    "lat": 41.7687,
+    "lng": 140.7288,
+    "country": "Japan",
+    "difficulty": "hard"
+  },
+  {
+    "id": "89b38189-0e55-4e31-ba23-e89494dce296",
+    "lat": 36.3659,
+    "lng": 140.4711,
+    "country": "Japan",
+    "difficulty": "hard"
+  },
+  {
+    "id": "73b917fa-8ca2-45fc-a9a8-cf1d07c2cb04",
+    "lat": -27.5701,
+    "lng": -153.0701,
+    "country": "Australia",
+    "difficulty": "hard"
+  },
+  {
+    "id": "764cf119-2a6e-4033-94e6-e7acbb9db09f",
+    "lat": -33.8915,
+    "lng": 151.2767,
+    "country": "Australia",
+    "difficulty": "easy"
+  },
+  {
+    "id": "b1c35d34-0f90-470b-8459-46539c86c9a2",
+    "lat": -33.7128,
+    "lng": 150.3119,
+    "country": "Australia",
+    "difficulty": "medium"
+  },
+  {
+    "id": "66c931dc-e9e1-4678-ae88-a0885e327d85",
+    "lat": -32.598,
+    "lng": 115.7214,
+    "country": "Australia",
+    "difficulty": "hard"
+  },
+  {
+    "id": "10107539-5b49-462d-8773-02176549d3c3",
+    "lat": -33.9189,
+    "lng": 18.4233,
+    "country": "South Africa",
+    "difficulty": "medium"
+  },
+  {
+    "id": "e3e2c6d2-f996-45f5-8f98-cc3ee0a23c97",
+    "lat": -23.0012,
+    "lng": -43.3501,
+    "country": "Brazil",
+    "difficulty": "hard"
+  },
+  {
+    "id": "f46482d9-5f88-42e8-b740-ef162886bd38",
+    "lat": -23.5489,
+    "lng": -46.6388,
+    "country": "Brazil",
+    "difficulty": "medium"
+  },
+  {
+    "id": "c8e07e2d-702c-46b4-ad9f-343cfc29f6e6",
+    "lat": -34.5826,
+    "lng": -58.4211,
+    "country": "Argentina",
+    "difficulty": "medium"
+  },
+  {
+    "id": "de72a892-d1d4-41ce-a213-c29c73effdd6",
+    "lat": -32.9468,
+    "lng": -60.6393,
+    "country": "Argentina",
+    "difficulty": "hard"
+  },
+  {
+    "id": "6bdcfadd-4965-4b9b-98bf-02bcbbf9d811",
+    "lat": 13.7278,
+    "lng": 100.5241,
+    "country": "Thailand",
+    "difficulty": "medium"
+  },
+  {
+    "id": "eef9db26-b825-401d-b740-2e0b96c21a9e",
+    "lat": 18.7902,
+    "lng": 98.9745,
+    "country": "Thailand",
+    "difficulty": "hard"
+  },
+  {
+    "id": "00c6c3c6-d899-4679-bbed-b944826692aa",
+    "lat": 3.1466,
+    "lng": 101.6984,
+    "country": "Malaysia",
+    "difficulty": "medium"
+  },
+  {
+    "id": "5ace7cc3-c976-4dde-81d7-23352d223a11",
+    "lat": 5.4143,
+    "lng": 100.3295,
+    "country": "Malaysia",
+    "difficulty": "hard"
+  },
+  {
+    "id": "c2f9240a-f87f-4065-b135-ecbdfb97eff6",
+    "lat": 1.3521,
+    "lng": 103.8198,
+    "country": "Singapore",
+    "difficulty": "medium"
+  },
+  {
+    "id": "a46317d1-7eaf-4752-a68c-cbe813f565c2",
+    "lat": 25.0421,
+    "lng": 121.5082,
+    "country": "Taiwan",
+    "difficulty": "easy"
+  },
+  {
+    "id": "2ea5cd70-88d1-4aab-868e-aeafb2bd435f",
+    "lat": 24.0817,
+    "lng": 120.6861,
+    "country": "Taiwan",
+    "difficulty": "hard"
+  },
+  {
+    "id": "47a49fbb-d370-465f-9204-f135701a221c",
+    "lat": 52.3676,
+    "lng": 4.9041,
+    "country": "Netherlands",
+    "difficulty": "easy"
+  },
+  {
+    "id": "fe99ad07-f145-4417-85c0-52dcf6c1d750",
+    "lat": 51.2198,
+    "lng": 4.4025,
+    "country": "Belgium",
+    "difficulty": "medium"
+  },
+  {
+    "id": "2d3d89ea-a775-4190-a686-47d96441fa96",
+    "lat": 48.21,
+    "lng": 16.363,
+    "country": "Austria",
+    "difficulty": "easy"
+  },
+  {
+    "id": "5eadce53-c9b4-4d20-a9cb-0154e365b658",
+    "lat": 59.3262,
+    "lng": 17.9875,
+    "country": "Sweden",
+    "difficulty": "hard"
+  },
+  {
+    "id": "171bf4f5-bfc5-4431-ab77-b3df7295b05f",
+    "lat": 55.6794,
+    "lng": 12.5925,
+    "country": "Denmark",
+    "difficulty": "easy"
+  },
+  {
+    "id": "c1ab7d7b-009b-425e-b662-8e2a6649b88b",
+    "lat": 50.0803,
+    "lng": 14.4028,
+    "country": "Czech Republic",
+    "difficulty": "easy"
+  },
+  {
+    "id": "6e2b5b0e-93a9-4ade-b389-788d80e442bd",
+    "lat": 37.9838,
+    "lng": 23.7275,
+    "country": "Greece",
+    "difficulty": "easy"
+  }
+]

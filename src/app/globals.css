@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+:root {
+    --background: #030303;
+    --foreground: #fafafa;
+    --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui;
+    --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular;
+}
+
+@theme {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --animate-spin-slow: spin 12s linear infinite;
+
+    --font-sans: var(--font-sans);
+    --font-mono: var(--font-mono);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Leaflet Custom Styles to blend with Dark Theme */
+.leaflet-container {
+    background: #09090b !important;
+    font-family: inherit !important;
+}
+
+.leaflet-bar {
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+.leaflet-bar a {
+    background-color: rgba(15, 15, 17, 0.85) !important;
+    color: #fafafa !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(12px);
+    transition:
+        background-color 0.2s,
+        color 0.2s;
+}
+
+.leaflet-bar a:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #white !important;
+}
+
+.leaflet-control-attribution {
+    background: rgba(9, 9, 11, 0.7) !important;
+    color: #71717a !important;
+    backdrop-filter: blur(8px);
+    font-size: 9px !important;
+    border-top-left-radius: 6px;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.leaflet-control-attribution a {
+    color: #a1a1aa !important;
+}
+
+/* Custom Marker styles */
+.custom-marker-guess,
+.custom-marker-actual {
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Slow spin helper */
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 15s linear infinite;
+}
