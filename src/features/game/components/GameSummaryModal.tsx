@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
+import { getCountryName } from "@/shared/lib/countries";
 
 interface GameSummaryModalProps {
   score: number;
@@ -170,7 +171,7 @@ export const GameSummaryModal: React.FC<GameSummaryModalProps> = ({
                       </span>
                       <MapPin size={16} className="text-zinc-400" />
                       <span className="text-white font-medium truncate max-w-[180px] sm:max-w-[240px]">
-                        {r.location.country}
+                        {getCountryName(r.location.country)}
                       </span>
                     </div>
 

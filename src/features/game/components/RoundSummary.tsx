@@ -6,6 +6,7 @@ import { GlassButton } from "@/shared/components/GlassButton";
 import { ScoreCounter } from "@/shared/components/ScoreCounter";
 import { Compass, ArrowRight, MapPin, Navigation } from "lucide-react";
 import { motion } from "framer-motion";
+import { getCountryName } from "@/shared/lib/countries";
 
 interface RoundSummaryProps {
   score: number;
@@ -97,7 +98,7 @@ export const RoundSummary: React.FC<RoundSummaryProps> = ({
               ACTUAL LOCATION
             </span>
             <span className="text-sm font-semibold text-white truncate max-w-[200px]">
-              {country}
+              {getCountryName(country)}
             </span>
           </div>
         </div>

@@ -22,6 +22,7 @@ interface GameContainerProps {
   userId: string | null;
   mode: "CLASSIC" | "INFINITE" | "COUNTRY";
   country: string | null;
+  difficulty?: string;
   onExit: () => void;
 }
 
@@ -29,6 +30,7 @@ export const GameContainer: React.FC<GameContainerProps> = ({
   userId,
   mode,
   country,
+  difficulty = "medium",
   onExit,
 }) => {
   const [game, setGame] = useState<GameState | null>(null);
@@ -39,13 +41,22 @@ export const GameContainer: React.FC<GameContainerProps> = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showSummaryModal, setShowSummaryModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [timeLeft, setTimeLeft] = useState<number | null>(null);
+
+  const ROUND_DURATION = 60; // 60 seconds for timed modes
 
   // Initialize a new game
   const initGame = useCallback(async () => {
     setIsLoading(true);
     try {
       const totalRounds = mode === "INFINITE" ? 999 : 5;
-      const gameData = await startNewGame(userId, mode, totalRounds, country);
+      const gameData = await startNewGame(
+        userId,
+        mode,
+        totalRounds,
+        country,
+        difficulty,
+      );
 
       setGame(gameData);
       setCurrentRoundIndex(0);
@@ -54,16 +65,126 @@ export const GameContainer: React.FC<GameContainerProps> = ({
       setRoundScore(null);
       setIsSubmitted(false);
       setShowSummaryModal(false);
+
+      // Start timer if applicable
+      if (mode !== "INFINITE") {
+        setTimeLeft(ROUND_DURATION);
+      } else {
+        setTimeLeft(null);
+      }
     } catch (err) {
       console.error("Error starting new game:", err);
     } finally {
       setIsLoading(false);
     }
-  }, [userId, mode, country]);
+  }, [userId, mode, country, difficulty]);
 
   useEffect(() => {
-    initGame();
+    queueMicrotask(() => {
+      initGame();
+    });
   }, [initGame]);
+
+  // Handle Timer
+  useEffect(() => {
+    if (timeLeft === null || isSubmitted || showSummaryModal) return;
+
+    if (timeLeft === 0) {
+      // Auto-submit when time runs out
+      handleSubmitGuess();
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => (prev !== null && prev > 0 ? prev - 1 : 0));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [timeLeft, isSubmitted, showSummaryModal]);
+
+  const currentRound = game?.rounds?.[currentRoundIndex];
+  const actualLocation = currentRound?.location;
+
+  const handleSelectGuess = useCallback(
+    (lat: number, lng: number) => {
+      if (isSubmitted) return;
+      // Normalize longitude to standard [-180, 180] range
+      let normalizedLng = lng % 360;
+      if (normalizedLng > 180) normalizedLng -= 360;
+      if (normalizedLng < -180) normalizedLng += 360;
+      setGuess({ lat, lng: normalizedLng });
+    },
+    [isSubmitted],
+  );
+
+  const handleSubmitGuess = useCallback(async () => {
+    if (isSubmitted || !actualLocation || !game || !currentRound) return;
+
+    // Use current guess or default to null (0 score) if time ran out
+    const finalGuess = guess;
+    let dist = 0;
+    let score = 0;
+
+    if (finalGuess) {
+      // 1. Calculate distance (Haversine in km)
+      dist = calculateDistance(
+        actualLocation.lat,
+        actualLocation.lng,
+        finalGuess.lat,
+        finalGuess.lng,
+      );
+
+      // 2. Calculate score
+      score = calculateScore(dist);
+    }
+
+    setDistance(dist);
+    setRoundScore(score);
+    setIsSubmitted(true);
+    setTimeLeft(null); // Stop timer
+
+    // 3. Update game locally
+    const updatedRounds = [...game.rounds];
+    updatedRounds[currentRoundIndex] = {
+      ...currentRound,
+      score,
+      distance: dist,
+      guess: finalGuess,
+    };
+
+    const newTotalScore = game.totalScore + score;
+    const isLastRound = currentRoundIndex === game.totalRounds - 1;
+
+    setGame({
+      ...game,
+      totalScore: newTotalScore,
+      currentRound: isLastRound ? game.currentRound : game.currentRound + 1,
+      status: isLastRound ? "COMPLETED" : "IN_PROGRESS",
+      rounds: updatedRounds,
+    });
+
+    // 4. Save guess in DB / Virtual state
+    try {
+      await submitRoundGuess(
+        game.id,
+        currentRound.id,
+        finalGuess?.lat || 0,
+        finalGuess?.lng || 0,
+        score,
+        dist,
+        game.isVirtual,
+      );
+    } catch (err) {
+      console.warn("Failed to persist guess on server:", err);
+    }
+  }, [
+    guess,
+    isSubmitted,
+    actualLocation,
+    game,
+    currentRoundIndex,
+    currentRound,
+  ]);
 
   if (isLoading) {
     return (
@@ -85,7 +206,7 @@ export const GameContainer: React.FC<GameContainerProps> = ({
     );
   }
 
-  if (!game || game.rounds.length === 0) {
+  if (!game || game.rounds.length === 0 || !currentRound || !actualLocation) {
     return (
       <div className="fixed inset-0 bg-zinc-950 flex items-center justify-center z-50 p-4">
         <GlassCard className="p-8 max-w-sm text-center flex flex-col gap-4">
@@ -102,67 +223,6 @@ export const GameContainer: React.FC<GameContainerProps> = ({
     );
   }
 
-  const currentRound = game.rounds[currentRoundIndex];
-  const actualLocation = currentRound.location;
-
-  const handleSelectGuess = (lat: number, lng: number) => {
-    setGuess({ lat, lng });
-  };
-
-  const handleSubmitGuess = async () => {
-    if (!guess || isSubmitted) return;
-
-    // 1. Calculate distance (Haversine in km)
-    const dist = calculateDistance(
-      actualLocation.lat,
-      actualLocation.lng,
-      guess.lat,
-      guess.lng,
-    );
-
-    // 2. Calculate score
-    const score = calculateScore(dist);
-
-    setDistance(dist);
-    setRoundScore(score);
-    setIsSubmitted(true);
-
-    // 3. Update game locally
-    const updatedRounds = [...game.rounds];
-    updatedRounds[currentRoundIndex] = {
-      ...currentRound,
-      score,
-      distance: dist,
-      guess,
-    };
-
-    const newTotalScore = game.totalScore + score;
-    const isLastRound = currentRoundIndex === game.totalRounds - 1;
-
-    setGame({
-      ...game,
-      totalScore: newTotalScore,
-      currentRound: isLastRound ? game.currentRound : game.currentRound + 1,
-      status: isLastRound ? "COMPLETED" : "IN_PROGRESS",
-      rounds: updatedRounds,
-    });
-
-    // 4. Save guess in DB / Virtual state
-    try {
-      await submitRoundGuess(
-        game.id,
-        currentRound.id,
-        guess.lat,
-        guess.lng,
-        score,
-        dist,
-        game.isVirtual,
-      );
-    } catch (err) {
-      console.warn("Failed to persist guess on server:", err);
-    }
-  };
-
   const handleNextRound = () => {
     const isLastRound = currentRoundIndex === game.totalRounds - 1;
 
@@ -175,6 +235,9 @@ export const GameContainer: React.FC<GameContainerProps> = ({
       setDistance(null);
       setRoundScore(null);
       setIsSubmitted(false);
+      if (mode !== "INFINITE") {
+        setTimeLeft(ROUND_DURATION);
+      }
     }
   };
 
@@ -184,6 +247,8 @@ export const GameContainer: React.FC<GameContainerProps> = ({
       <StreetViewContainer
         lat={actualLocation.lat}
         lng={actualLocation.lng}
+        panoId={actualLocation.panoId}
+        initialHeading={actualLocation.heading}
         key={`${actualLocation.id}-${currentRoundIndex}`} // Key reset forces iframe remount
       />
 
@@ -194,6 +259,7 @@ export const GameContainer: React.FC<GameContainerProps> = ({
         score={game.totalScore}
         mode={game.mode}
         country={game.country}
+        timeLeft={timeLeft}
         onExit={onExit}
       />
 

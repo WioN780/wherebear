@@ -4,11 +4,14 @@ import { prisma } from "@/shared/lib/db";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import bcrypt from "bcryptjs";
+import { encode } from "next-auth/jwt";
 
 import { config } from "@/shared/lib/config";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: PrismaAdapter(prisma as any),
+  adapter: PrismaAdapter(
+    prisma as unknown as Parameters<typeof PrismaAdapter>[0],
+  ),
   providers: [
     Google({
       clientId: config.auth.google.clientId,
@@ -58,6 +61,31 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   ],
   session: {
     strategy: "jwt",
+  },
+  jwt: {
+    async encode(params) {
+      const token = await encode(params);
+      if (params.token && params.token.id) {
+        const userId = params.token.id as string;
+        const expires = new Date(
+          Date.now() + (params.maxAge ?? 30 * 24 * 60 * 60) * 1000,
+        );
+        try {
+          await prisma.session.upsert({
+            where: { sessionToken: token },
+            update: { expires },
+            create: {
+              sessionToken: token,
+              userId,
+              expires,
+            },
+          });
+        } catch (err) {
+          console.error("Failed to save session to database:", err);
+        }
+      }
+      return token;
+    },
   },
   callbacks: {
     async jwt({ token, user }) {

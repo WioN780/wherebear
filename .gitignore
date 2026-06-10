@@ -32,6 +32,17 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+db.json
 
 # vercel
 .vercel
@@ -41,3 +52,15 @@ yarn-error.log*
 next-env.d.ts
 
 /src/generated/prisma
+
+# agent specific
+.agents/
+skills-lock.json
+
+# go backend build artifacts
+/backend/server.exe
+/backend/server
+/backend/dist/
+/backend/bin/
+*.exe
+*.bin

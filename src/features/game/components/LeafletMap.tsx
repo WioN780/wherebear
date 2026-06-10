@@ -35,8 +35,10 @@ export default function LeafletMap({
   const polylineRef = useRef<L.Polyline | null>(null);
 
   // Custom premium animated icons using CSS
-  const guessIcon = L.divIcon({
-    html: `
+  const guessIcon = React.useMemo(
+    () =>
+      L.divIcon({
+        html: `
       <div class="relative flex items-center justify-center">
         <div class="absolute w-6 h-6 bg-indigo-500/40 rounded-full animate-ping"></div>
         <div class="relative w-4 h-4 bg-indigo-500 rounded-full border-2 border-white shadow-[0_0_10px_rgba(99,102,241,0.8)] flex items-center justify-center">
@@ -44,13 +46,17 @@ export default function LeafletMap({
         </div>
       </div>
     `,
-    className: "custom-marker-guess",
-    iconSize: [24, 24],
-    iconAnchor: [12, 12],
-  });
+        className: "custom-marker-guess",
+        iconSize: [24, 24],
+        iconAnchor: [12, 12],
+      }),
+    [],
+  );
 
-  const actualIcon = L.divIcon({
-    html: `
+  const actualIcon = React.useMemo(
+    () =>
+      L.divIcon({
+        html: `
       <div class="relative flex items-center justify-center">
         <div class="absolute w-6 h-6 bg-emerald-500/40 rounded-full animate-pulse"></div>
         <div class="relative w-4 h-4 bg-emerald-500 rounded-full border-2 border-white shadow-[0_0_10px_rgba(16,185,129,0.8)] flex items-center justify-center">
@@ -58,12 +64,25 @@ export default function LeafletMap({
         </div>
       </div>
     `,
-    className: "custom-marker-actual",
-    iconSize: [24, 24],
-    iconAnchor: [12, 12],
-  });
+        className: "custom-marker-actual",
+        iconSize: [24, 24],
+        iconAnchor: [12, 12],
+      }),
+    [],
+  );
 
-  // Initialize Map
+  // Use refs to avoid recreating the map when callback or submission state changes
+  const onGuessSelectRef = useRef(onGuessSelect);
+  const isSubmittedRef = useRef(isSubmitted);
+  const guessRef = useRef(guess);
+
+  useEffect(() => {
+    onGuessSelectRef.current = onGuessSelect;
+    isSubmittedRef.current = isSubmitted;
+    guessRef.current = guess;
+  }, [onGuessSelect, isSubmitted, guess]);
+
+  // Initialize Map exactly once on mount
   useEffect(() => {
     if (!mapContainerRef.current || mapRef.current) return;
 
@@ -97,11 +116,11 @@ export default function LeafletMap({
       })
       .addTo(map);
 
-    // Click listener to place marker
+    // Click listener to place marker using ref to avoid recreating the map
     map.on("click", (e: L.LeafletMouseEvent) => {
-      if (isSubmitted) return;
+      if (isSubmittedRef.current) return;
       const { lat, lng } = e.latlng;
-      onGuessSelect(lat, lng);
+      onGuessSelectRef.current(lat, lng);
     });
 
     mapRef.current = map;
@@ -112,7 +131,7 @@ export default function LeafletMap({
         mapRef.current = null;
       }
     };
-  }, [onGuessSelect, isSubmitted]);
+  }, []);
 
   // Handle guess marker placement
   useEffect(() => {
@@ -135,26 +154,46 @@ export default function LeafletMap({
     }
   }, [guess, guessIcon]);
 
+  // Reset map view on new round
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+
+    if (!guess && !isSubmitted) {
+      map.setView([20, 0], 1.5, { animate: true });
+    }
+  }, [guess, isSubmitted]);
+
   // Handle results state: draw correct location marker, connecting line, and zoom bounds
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
 
     if (isSubmitted && guess && actual) {
+      // Adjust actual's longitude to take the shortest path on the map (crossing the Date Line if shorter)
+      let adjustedActualLng = actual.lng;
+      const diff = actual.lng - guess.lng;
+      if (diff < -180) {
+        adjustedActualLng += 360;
+      } else if (diff > 180) {
+        adjustedActualLng -= 360;
+      }
+      const adjustedActual = { lat: actual.lat, lng: adjustedActualLng };
+
       // 1. Draw Correct/Actual location marker
       if (actualMarkerRef.current) {
-        actualMarkerRef.current.setLatLng(actual);
+        actualMarkerRef.current.setLatLng(adjustedActual);
       } else {
-        actualMarkerRef.current = L.marker(actual, { icon: actualIcon }).addTo(
-          map,
-        );
+        actualMarkerRef.current = L.marker(adjustedActual, {
+          icon: actualIcon,
+        }).addTo(map);
       }
 
-      // 2. Draw polyline connecting guess and actual
+      // 2. Draw polyline connecting guess and actual (shortest path)
       if (polylineRef.current) {
         polylineRef.current.remove();
       }
-      polylineRef.current = L.polyline([guess, actual], {
+      polylineRef.current = L.polyline([guess, adjustedActual], {
         color: "#6366f1",
         weight: 3,
         dashArray: "6, 6",
@@ -162,7 +201,7 @@ export default function LeafletMap({
       }).addTo(map);
 
       // 3. Fit bounds to show both pins
-      const bounds = L.latLngBounds([guess, actual]);
+      const bounds = L.latLngBounds([guess, adjustedActual]);
       map.fitBounds(bounds, {
         padding: [50, 50],
         maxZoom: 10,
@@ -184,16 +223,18 @@ export default function LeafletMap({
 
   // Auto-resize map container on expansion
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (mapRef.current) {
         mapRef.current.invalidateSize({ animate: true });
         // Recenter on guess if expanded
-        if (guess && !isSubmitted) {
-          mapRef.current.panTo(guess);
+        const currentGuess = guessRef.current;
+        if (currentGuess && !isSubmitted) {
+          mapRef.current.panTo(currentGuess);
         }
       }
     }, 300); // Wait for transition
-  }, [isExpanded, guess, isSubmitted]);
+    return () => clearTimeout(timer);
+  }, [isExpanded, isSubmitted]);
 
   return (
     <div className={cn("relative w-full h-full flex flex-col", className)}>

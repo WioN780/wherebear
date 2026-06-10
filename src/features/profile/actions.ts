@@ -14,6 +14,7 @@ export interface UserStats {
 export interface GameHistoryItem {
   id: string;
   mode: string;
+  country: string | null;
   totalScore: number;
   createdAt: Date;
   roundsCount: number;
@@ -53,7 +54,7 @@ export async function getUserProfileStats(
 
     const gamesPlayed = completedGames.length;
     const totalScore = completedGames.reduce(
-      (sum: number, g: any) => sum + g.totalScore,
+      (sum: number, g) => sum + g.totalScore,
       0,
     );
     const averageScore =
@@ -65,9 +66,10 @@ export async function getUserProfileStats(
     const accuracyPercent =
       gamesPlayed > 0 ? Math.round((averageScore / 25000) * 100) : 0;
 
-    const history: GameHistoryItem[] = completedGames.map((g: any) => ({
+    const history: GameHistoryItem[] = completedGames.map((g) => ({
       id: g.id,
       mode: g.mode,
+      country: g.country,
       totalScore: g.totalScore,
       createdAt: g.createdAt,
       roundsCount: g.totalRounds,
@@ -99,6 +101,7 @@ export async function getUserProfileStats(
         {
           id: "h1",
           mode: "CLASSIC",
+          country: null,
           totalScore: 23450,
           createdAt: new Date(Date.now() - 86400000),
           roundsCount: 5,
@@ -107,6 +110,7 @@ export async function getUserProfileStats(
         {
           id: "h2",
           mode: "CLASSIC",
+          country: null,
           totalScore: 18200,
           createdAt: new Date(Date.now() - 86400000 * 3),
           roundsCount: 5,
@@ -115,6 +119,7 @@ export async function getUserProfileStats(
         {
           id: "h3",
           mode: "COUNTRY",
+          country: "US",
           totalScore: 15400,
           createdAt: new Date(Date.now() - 86400000 * 5),
           roundsCount: 5,
@@ -123,6 +128,7 @@ export async function getUserProfileStats(
         {
           id: "h4",
           mode: "CLASSIC",
+          country: null,
           totalScore: 19800,
           createdAt: new Date(Date.now() - 86400000 * 7),
           roundsCount: 5,

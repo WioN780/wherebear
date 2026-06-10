@@ -1,27 +1,26 @@
-datasource db {
-  provider = "postgresql"
-}
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
 }
 
-model Account {
-  id                 String  @id @default(uuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+datasource db {
+  provider = "postgresql"
+}
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+model Account {
+  id                String  @id @default(uuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -35,19 +34,33 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(uuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  password      String?   // For email/credentials login
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id                  String            @id @default(uuid())
+  name                String?
+  email               String?           @unique
+  emailVerified       DateTime?
+  image               String?
+  password            String?
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  accounts            Account[]
+  receivedFriendships Friendship[]      @relation("ReceivedFriendships")
+  sentFriendships     Friendship[]      @relation("SentFriendships")
+  games               Game[]
+  leaderboard         LeaderboardEntry?
+  sessions            Session[]
+}
 
-  accounts      Account[]
-  sessions      Session[]
-  games         Game[]
-  leaderboard   LeaderboardEntry?
+model Friendship {
+  id         String   @id @default(uuid())
+  senderId   String
+  receiverId String
+  status     String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  receiver   User     @relation("ReceivedFriendships", fields: [receiverId], references: [id], onDelete: Cascade)
+  sender     User     @relation("SentFriendships", fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@unique([senderId, receiverId])
 }
 
 model VerificationToken {
@@ -59,61 +72,68 @@ model VerificationToken {
 }
 
 model Game {
-  id           String    @id @default(uuid())
+  id           String   @id @default(uuid())
   userId       String?
-  user         User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  mode         String    // "CLASSIC", "INFINITE", "COUNTRY"
-  country      String?   // Country name/code for country challenge
-  status       String    @default("IN_PROGRESS") // "IN_PROGRESS", "COMPLETED"
-  currentRound Int       @default(1)
-  totalRounds  Int       @default(5)
-  totalScore   Int       @default(0)
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-
+  mode         String
+  country      String?
+  status       String   @default("IN_PROGRESS")
+  currentRound Int      @default(1)
+  totalRounds  Int      @default(5)
+  totalScore   Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   rounds       Round[]
 }
 
 model Round {
-  id          String    @id @default(uuid())
+  id          String   @id @default(uuid())
   gameId      String
-  game        Game      @relation(fields: [gameId], references: [id], onDelete: Cascade)
   locationId  String
-  location    Location  @relation(fields: [locationId], references: [id])
   roundNumber Int
   score       Int?
-  distance    Float?    // distance in kilometers
+  distance    Float?
+  createdAt   DateTime @default(now())
   guess       Guess?
-  createdAt   DateTime  @default(now())
+  game        Game     @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  location    Location @relation(fields: [locationId], references: [id])
 }
 
 model Guess {
   id        String   @id @default(uuid())
   roundId   String   @unique
-  round     Round    @relation(fields: [roundId], references: [id], onDelete: Cascade)
   lat       Float
   lng       Float
   createdAt DateTime @default(now())
+  round     Round    @relation(fields: [roundId], references: [id], onDelete: Cascade)
 }
 
 model Location {
-  id         String   @id @default(uuid())
-  lat        Float
-  lng        Float
-  country    String
-  difficulty String   // "easy", "medium", "hard"
-  rounds     Round[]
+  id          String  @id @default(uuid())
+  lat         Float
+  lng         Float
+  panoId      String?
+  heading     Float?
+  country     String
+  subdivision String?
+  surface     String?
+  elevation   Float?
+  difficulty  String
+  rounds      Round[]
+
+  @@index([country])
+  @@index([difficulty])
 }
 
 model LeaderboardEntry {
   id           String   @id @default(uuid())
   userId       String   @unique
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   username     String
-  totalScore   Int      @default(0) // Cumulative score across all games
+  totalScore   Int      @default(0)
   gamesPlayed  Int      @default(0)
   averageScore Float    @default(0.0)
-  highScore    Int      @default(0) // Best game score
+  highScore    Int      @default(0)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

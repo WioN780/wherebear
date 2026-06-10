@@ -18,17 +18,30 @@ import {
 interface StreetViewContainerProps {
   lat: number;
   lng: number;
+  panoId?: string | null;
+  initialHeading?: number | null;
   onControlsReady?: () => void;
 }
 
 export const StreetViewContainer: React.FC<StreetViewContainerProps> = ({
   lat,
   lng,
+  panoId,
+  initialHeading,
   onControlsReady,
 }) => {
-  const [heading, setHeading] = useState(0);
+  const [heading, setHeading] = useState(initialHeading || 0);
   const [pitch, setPitch] = useState(0);
   const [fov, setFov] = useState(90); // Default field of view (zoom)
+
+  // Update heading when initialHeading changes (on location remount)
+  useEffect(() => {
+    if (initialHeading !== undefined && initialHeading !== null) {
+      queueMicrotask(() => {
+        setHeading(initialHeading);
+      });
+    }
+  }, [initialHeading]);
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "";
   const isKeyPlaceholder =
@@ -75,12 +88,13 @@ export const StreetViewContainer: React.FC<StreetViewContainerProps> = ({
   }, []);
 
   const resetView = () => {
-    setHeading(0);
+    setHeading(initialHeading || 0);
     setPitch(0);
     setFov(90);
   };
 
-  const embedUrl = `https://www.google.com/maps/embed/v1/streetview?key=${apiKey}&location=${lat},${lng}&heading=${heading}&pitch=${pitch}&fov=${fov}`;
+  const locationParam = panoId ? `pano=${panoId}` : `location=${lat},${lng}`;
+  const embedUrl = `https://www.google.com/maps/embed/v1/streetview?key=${apiKey}&${locationParam}&heading=${heading}&pitch=${pitch}&fov=${fov}`;
 
   return (
     <div className="relative w-full h-full bg-zinc-950 flex items-center justify-center overflow-hidden">
@@ -110,7 +124,7 @@ export const StreetViewContainer: React.FC<StreetViewContainerProps> = ({
             <div className="bg-white/5 border border-white/10 rounded-xl p-4 mb-6 text-left font-mono text-xs text-zinc-300">
               <span className="text-zinc-500"># In .env:</span>
               <br />
-              NEXT_PUBLIC_GOOGLE_MAPS_API_KEY="AIzaSy..."
+              NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=&quot;AIzaSy...&quot;
             </div>
 
             <div className="flex flex-col gap-3">

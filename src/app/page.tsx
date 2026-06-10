@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import HomeClient from "@/features/home/components/HomeClient";
+import HomeClient from "@/features/game/components/HomeClient";
 
 // Force dynamic rendering since we are checking user sessions (via headers/cookies)
 export const dynamic = "force-dynamic";

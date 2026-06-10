@@ -4,8 +4,9 @@ import React from "react";
 import { FloatingPanel } from "@/shared/components/FloatingPanel";
 import { GlassButton } from "@/shared/components/GlassButton";
 import { ScoreCounter } from "@/shared/components/ScoreCounter";
-import { ArrowLeft, Globe, MapPin, Trophy } from "lucide-react";
+import { ArrowLeft, Globe, MapPin, Trophy, Clock } from "lucide-react";
 import { motion } from "framer-motion";
+import { getCountryName } from "@/shared/lib/countries";
 
 interface GameHUDProps {
   round: number;
@@ -13,6 +14,7 @@ interface GameHUDProps {
   score: number;
   mode: string;
   country: string | null;
+  timeLeft?: number | null;
   onExit: () => void;
 }
 
@@ -22,6 +24,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
   score,
   mode,
   country,
+  timeLeft,
   onExit,
 }) => {
   const getModeLabel = () => {
@@ -31,7 +34,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
       case "INFINITE":
         return "Infinite Mode";
       case "COUNTRY":
-        return `Country: ${country || "Unknown"}`;
+        return `Country: ${getCountryName(country)}`;
       default:
         return "Geography guesser";
     }
@@ -71,6 +74,29 @@ export const GameHUD: React.FC<GameHUDProps> = ({
               : `Round ${round} of ${totalRounds}`}
           </span>
         </div>
+
+        {timeLeft !== undefined && timeLeft !== null && (
+          <>
+            <div className="w-[1px] h-4 bg-white/10" />
+            <div className="flex items-center gap-2">
+              <Clock
+                size={16}
+                className={
+                  timeLeft <= 10
+                    ? "text-red-400 animate-pulse"
+                    : "text-indigo-400"
+                }
+              />
+              <span
+                className={`text-sm font-bold font-mono min-w-[24px] ${
+                  timeLeft <= 10 ? "text-red-400" : "text-indigo-400"
+                }`}
+              >
+                {timeLeft}s
+              </span>
+            </div>
+          </>
+        )}
       </FloatingPanel>
 
       {/* Right Total Score Board */}

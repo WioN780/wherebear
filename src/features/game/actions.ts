@@ -1,13 +1,29 @@
 "use server";
 
+import type { Prisma } from "@/generated/prisma";
 import { prisma } from "@/shared/lib/db";
-import locationSeed from "@/../prisma/location_seed.json";
+import { getCountryName } from "@/shared/lib/countries";
+
+export type LeaderboardEntry = {
+  id: string;
+  userId: string;
+  username: string;
+  gamesPlayed: number;
+  averageScore: number;
+  highScore: number;
+  user?: { image: string | null } | null;
+};
 
 export interface LocationData {
   id: string;
   lat: number;
   lng: number;
+  panoId: string | null;
+  heading: number | null;
   country: string;
+  subdivision: string | null;
+  surface: string | null;
+  elevation: number | null;
   difficulty: string;
 }
 
@@ -46,91 +62,59 @@ function shuffle<T>(array: T[]): T[] {
 
 /**
  * Gets a list of random locations for the game.
- * Uses the database if available, otherwise falls back to the local JSON seed.
+ * Uses the database if available.
  */
 export async function getGameLocations(
   count: number,
   mode: string,
   countryFilter?: string,
+  difficultyFilter?: string,
 ): Promise<LocationData[]> {
   try {
-    // Attempt database retrieval
-    let dbLocations: any[] = [];
-
-    // Auto-seed database if empty
-    try {
-      const locCount = await prisma.location.count();
-      if (locCount === 0) {
-        console.log(
-          "Database contains 0 locations. Auto-seeding curated location pool...",
-        );
-        await prisma.location.createMany({
-          data: locationSeed.map((l: any) => ({
-            id: l.id,
-            lat: l.lat,
-            lng: l.lng,
-            country: l.country,
-            difficulty: l.difficulty,
-          })),
-          skipDuplicates: true,
-        });
-        console.log(
-          `Auto-seeded ${locationSeed.length} locations successfully.`,
-        );
-      }
-    } catch (seedErr) {
+    // Check if database has locations
+    const locCount = await prisma.location.count();
+    if (locCount === 0) {
       console.warn(
-        "Failed to check or auto-seed locations, database might not have tables yet:",
-        seedErr,
+        "Database contains 0 locations. Please run 'npm run prisma:integrate-vali' to seed locations.",
       );
+      return [];
     }
 
-    if (mode === "COUNTRY" && countryFilter) {
-      dbLocations = await prisma.location.findMany({
-        where: {
-          country: {
-            equals: countryFilter,
-            mode: "insensitive",
-          },
-        },
-      });
-    } else {
-      dbLocations = await prisma.location.findMany();
-    }
+    const whereClause: Prisma.LocationWhereInput = {
+      ...(difficultyFilter
+        ? { difficulty: difficultyFilter.toLowerCase() }
+        : {}),
+      ...(mode === "COUNTRY" && countryFilter
+        ? { country: { equals: countryFilter, mode: "insensitive" } }
+        : {}),
+    };
 
-    if (dbLocations.length >= count) {
+    // Fetch a pool of up to 1000 locations matching the query and shuffle them ????
+    const dbLocations = await prisma.location.findMany({
+      where: whereClause,
+      take: 1000,
+    });
+
+    if (dbLocations.length > 0) {
       const shuffled = shuffle(dbLocations);
-      return shuffled.slice(0, count).map((l) => ({
+      return shuffled.slice(0, Math.min(count, shuffled.length)).map((l) => ({
         id: l.id,
         lat: l.lat,
         lng: l.lng,
+        panoId: l.panoId,
+        heading: l.heading,
         country: l.country,
+        subdivision: l.subdivision,
+        surface: l.surface,
+        elevation: l.elevation,
         difficulty: l.difficulty,
       }));
     }
   } catch (err) {
-    console.warn(
-      "Database locations query failed, falling back to JSON seed:",
-      err,
-    );
+    console.error("Database locations query failed:", err);
   }
 
-  // Fallback: Use JSON seed
-  let pool = locationSeed as LocationData[];
-
-  if (mode === "COUNTRY" && countryFilter) {
-    pool = pool.filter(
-      (l) => l.country.toLowerCase() === countryFilter.toLowerCase(),
-    );
-  }
-
-  // If filter produces too few items, ignore country filter
-  if (pool.length < count) {
-    pool = locationSeed as LocationData[];
-  }
-
-  const shuffled = shuffle(pool);
-  return shuffled.slice(0, count);
+  return [];
 }
 
 /**
@@ -143,11 +127,13 @@ export async function startNewGame(
   mode: string,
   totalRounds: number = 5,
   country: string | null = null,
+  difficulty: string = "medium",
 ): Promise<GameState> {
   const locations = await getGameLocations(
     totalRounds,
     mode,
     country || undefined,
+    difficulty,
   );
   const virtualId = `game_virt_${Math.random().toString(36).substring(2, 11)}`;
 
@@ -210,14 +196,19 @@ export async function startNewGame(
         totalRounds: dbGame.totalRounds,
         totalScore: dbGame.totalScore,
         isVirtual: false,
-        rounds: dbGame.rounds.map((r: any) => ({
+        rounds: dbGame.rounds.map((r) => ({
           id: r.id,
           gameId: r.gameId,
           location: {
             id: r.location.id,
             lat: r.location.lat,
             lng: r.location.lng,
+            panoId: r.location.panoId,
+            heading: r.location.heading,
             country: r.location.country,
+            subdivision: r.location.subdivision,
+            surface: r.location.surface,
+            elevation: r.location.elevation,
             difficulty: r.location.difficulty,
           },
           roundNumber: r.roundNumber,
@@ -294,9 +285,9 @@ export async function submitRoundGuess(
       return { success: false };
     }
 
-    const completedRounds = game.rounds.filter((r: any) => r.score !== null);
+    const completedRounds = game.rounds.filter((r) => r.score !== null);
     const totalScore =
-      completedRounds.reduce((sum: number, r: any) => sum + (r.score || 0), 0) +
+      completedRounds.reduce((sum: number, r) => sum + (r.score || 0), 0) +
       score;
     const isLastRound = game.currentRound >= game.totalRounds;
 
@@ -324,7 +315,12 @@ export async function submitRoundGuess(
           id: updatedRound.location.id,
           lat: updatedRound.location.lat,
           lng: updatedRound.location.lng,
+          panoId: updatedRound.location.panoId,
+          heading: updatedRound.location.heading,
           country: updatedRound.location.country,
+          subdivision: updatedRound.location.subdivision,
+          surface: updatedRound.location.surface,
+          elevation: updatedRound.location.elevation,
           difficulty: updatedRound.location.difficulty,
         },
         roundNumber: updatedRound.roundNumber,
@@ -361,7 +357,7 @@ async function updateLeaderboard(userId: string, gameScore: number) {
 
     const gamesPlayed = completedGames.length;
     const totalScoreSum = completedGames.reduce(
-      (sum: number, g: any) => sum + g.totalScore,
+      (sum: number, g) => sum + g.totalScore,
       0,
     );
     const averageScore = gamesPlayed > 0 ? totalScoreSum / gamesPlayed : 0;
@@ -400,7 +396,9 @@ async function updateLeaderboard(userId: string, gameScore: number) {
 /**
  * Gets the global leaderboard.
  */
-export async function getGlobalLeaderboard(limit: number = 20): Promise<any[]> {
+export async function getGlobalLeaderboard(
+  limit: number = 20,
+): Promise<LeaderboardEntry[]> {
   try {
     return await prisma.leaderboardEntry.findMany({
       orderBy: {
@@ -425,6 +423,7 @@ export async function getGlobalLeaderboard(limit: number = 20): Promise<any[]> {
     return [
       {
         id: "1",
+        userId: "",
         username: "GeoSherlock",
         highScore: 24850,
         gamesPlayed: 14,
@@ -432,6 +431,7 @@ export async function getGlobalLeaderboard(limit: number = 20): Promise<any[]> {
       },
       {
         id: "2",
+        userId: "",
         username: "BearGryllsClone",
         highScore: 23900,
         gamesPlayed: 8,
@@ -439,6 +439,7 @@ export async function getGlobalLeaderboard(limit: number = 20): Promise<any[]> {
       },
       {
         id: "3",
+        userId: "",
         username: "MapMaster",
         highScore: 22400,
         gamesPlayed: 25,
@@ -446,6 +447,7 @@ export async function getGlobalLeaderboard(limit: number = 20): Promise<any[]> {
       },
       {
         id: "4",
+        userId: "",
         username: "CarmenSandiego",
         highScore: 21950,
         gamesPlayed: 11,
@@ -453,6 +455,7 @@ export async function getGlobalLeaderboard(limit: number = 20): Promise<any[]> {
       },
       {
         id: "5",
+        userId: "",
         username: "LatitudeZero",
         highScore: 20100,
         gamesPlayed: 5,
@@ -465,7 +468,9 @@ export async function getGlobalLeaderboard(limit: number = 20): Promise<any[]> {
 /**
  * Get country lists for Country Challenge mode
  */
-export async function getAvailableCountries(): Promise<string[]> {
+export async function getAvailableCountries(): Promise<
+  { code: string; name: string }[]
+> {
   try {
     const countries = await prisma.location.findMany({
       select: {
@@ -475,16 +480,16 @@ export async function getAvailableCountries(): Promise<string[]> {
     });
 
     if (countries.length > 0) {
-      return countries.map((c: any) => c.country).sort();
+      return countries
+        .map((c) => ({
+          code: c.country,
+          name: getCountryName(c.country),
+        }))
+        .sort((a, b) => a.name.localeCompare(b.name));
     }
   } catch (err) {
-    // Fail silently, fallback below
+    console.warn("Failed to fetch available countries:", err);
   }
 
-  // Fallback to distinct countries in JSON seed
-  const countries = new Set<string>();
-  (locationSeed as LocationData[]).forEach((l) => {
-    countries.add(l.country);
-  });
-  return Array.from(countries).sort();
+  return [];
 }
