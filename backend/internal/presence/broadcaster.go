@@ -73,7 +73,7 @@ func (b *Broadcaster) BroadcastPresence(userID string, isOnline bool) {
 		}
 	}
 
-	// 2. If connecting online, push their own friend list back with latest statuses
+	// 2. If connecting online, push their own friend list and any pending requests
 	if isOnline {
 		friendList := make([]protocol.PresenceChangePayload, len(friends))
 		for i, f := range friends {
@@ -85,5 +85,13 @@ func (b *Broadcaster) BroadcastPresence(userID string, isOnline bool) {
 			}
 		}
 		b.notifier.SendToUser(userID, protocol.EventFriendListUpdate, friendList)
+
+		// Send any pending incoming friend requests so the user can accept them
+		pending, err := b.friendRepo.ListPending(ctx, userID)
+		if err != nil {
+			log.Printf("[Presence] Error listing pending requests for %s: %v", userID, err)
+		} else if len(pending) > 0 {
+			b.notifier.SendToUser(userID, protocol.EventPendingRequests, protocol.PendingRequestsPayload{Requests: pending})
+		}
 	}
 }

@@ -22,3 +22,11 @@ type FriendWithUser struct {
 	Username string `json:"username"`
 	Image    string `json:"image"`
 }
+
+// PendingRequest is an incoming (not yet accepted) friend request with sender info.
+type PendingRequest struct {
+	RequestID   string `json:"requestId"`
+	SenderID    string `json:"senderId"`
+	SenderName  string `json:"senderName"`
+	SenderImage string `json:"senderImage"`
+}

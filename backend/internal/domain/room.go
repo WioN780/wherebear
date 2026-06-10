@@ -25,6 +25,10 @@ type Room struct {
 	InviteCode    string
 	HostPlayerID  string
 	IsPrivate     bool
+	// IsQuickMatch marks rooms created by the matchmaker. These rooms auto-start
+	// when they fill to MaxPlayers and end immediately when a player leaves
+	// mid-game, notifying the remaining player of the abandonment.
+	IsQuickMatch  bool
 	State         RoomState
 	Config        RoomConfig
 	Players       []*Player

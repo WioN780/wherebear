@@ -24,14 +24,20 @@ func (s *Service) ListPublic(ctx context.Context) []*domain.Room {
 	return s.manager.ListPublicRooms()
 }
 
-// QuickMatch assigns a player to the first available public room matching the chosen difficulty.
-// If no rooms are available, it creates a new public room with that difficulty and 2-min (120s) rounds.
+// QuickMatch assigns a player to the first available quick-match room matching the chosen difficulty.
+// If no rooms are waiting, it creates a new 1v1 room and marks it as a quick-match room.
+// Quick-match rooms auto-start when both players are present and end immediately if a player leaves.
 func (s *Service) QuickMatch(ctx context.Context, userID, username, image string, difficulty string) (*domain.Room, error) {
 	publicRooms := s.manager.ListPublicRooms()
 
 	for _, r := range publicRooms {
-		// Only join if difficulty matches the user preference
-		if string(r.Config.Difficulty) == difficulty {
+		r.Mu.RLock()
+		isQM := r.IsQuickMatch
+		diff := string(r.Config.Difficulty)
+		r.Mu.RUnlock()
+
+		// Only join quick-match waiting rooms that match the requested difficulty
+		if isQM && diff == difficulty {
 			joined, err := s.roomSvc.Join(ctx, r.InviteCode, userID, username, image)
 			if err == nil {
 				return joined, nil
@@ -39,17 +45,17 @@ func (s *Service) QuickMatch(ctx context.Context, userID, username, image string
 		}
 	}
 
-	// No public rooms found or join attempts failed; create a new room
+	// No waiting quick-match room found; create a new 1v1 room
 	defaultConfig := domain.RoomConfig{
 		Mode:          domain.GameModeClassic,
 		Difficulty:    domain.Difficulty(difficulty),
-		MaxPlayers:    5,
+		MaxPlayers:    2,   // Duel format
 		TotalRounds:   5,
-		RoundDuration: 120, // Standard 2 minutes
+		RoundDuration: 120,
 		Country:       nil,
 	}
 
-	newRoom, err := s.roomSvc.Create(ctx, userID, username, image, false, defaultConfig)
+	newRoom, err := s.roomSvc.Create(ctx, userID, username, image, false, true, defaultConfig)
 	if err != nil {
 		return nil, err
 	}

@@ -121,6 +121,41 @@ func (r *sqlFriendRepository) FindBetween(ctx context.Context, userA, userB stri
 	return &fs, nil
 }
 
+func (r *sqlFriendRepository) ListPending(ctx context.Context, receiverID string) ([]domain.PendingRequest, error) {
+	query := `
+		SELECT f."id", u."id", u."name", u."email", u."image"
+		FROM "Friendship" f
+		JOIN "User" u ON f."senderId" = u."id"
+		WHERE f."receiverId" = $1 AND f."status" = 'PENDING'
+	`
+	rows, err := r.db.QueryContext(ctx, query, receiverID)
+	if err != nil {
+		return nil, fmt.Errorf("listing pending requests: %w", err)
+	}
+	defer rows.Close()
+
+	var pending []domain.PendingRequest
+	for rows.Next() {
+		var p domain.PendingRequest
+		var name, email, image sql.NullString
+		if err := rows.Scan(&p.RequestID, &p.SenderID, &name, &email, &image); err != nil {
+			return nil, fmt.Errorf("scanning pending request: %w", err)
+		}
+		if name.Valid && name.String != "" {
+			p.SenderName = name.String
+		} else if email.Valid && email.String != "" {
+			p.SenderName = email.String
+		} else {
+			p.SenderName = "Explorer"
+		}
+		if image.Valid {
+			p.SenderImage = image.String
+		}
+		pending = append(pending, p)
+	}
+	return pending, rows.Err()
+}
+
 func (r *sqlFriendRepository) ListAccepted(ctx context.Context, userID string) ([]domain.FriendWithUser, error) {
 	query := `
 		SELECT u."id", u."name", u."email", u."image"

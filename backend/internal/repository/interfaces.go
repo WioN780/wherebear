@@ -22,6 +22,7 @@ type FriendRepository interface {
 	GetByID(ctx context.Context, id string) (*domain.Friendship, error)
 	FindBetween(ctx context.Context, userA, userB string) (*domain.Friendship, error)
 	ListAccepted(ctx context.Context, userID string) ([]domain.FriendWithUser, error)
+	ListPending(ctx context.Context, receiverID string) ([]domain.PendingRequest, error)
 }
 
 type LeaderboardRepository interface {

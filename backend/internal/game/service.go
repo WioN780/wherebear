@@ -12,7 +12,7 @@ import (
 )
 
 // roundReviewSeconds is the duration of the post-round review phase.
-const roundReviewSeconds = 15
+const roundReviewSeconds = 7
 
 type Service struct {
 	manager         *room.Manager

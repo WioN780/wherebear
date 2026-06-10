@@ -12,6 +12,7 @@ import {
   RoomState,
   RoomConfig,
   FriendPresence,
+  FriendRequest,
   WsEvents,
   WsMessage,
 } from "../types";
@@ -19,6 +20,8 @@ import {
 interface MultiplayerContextProps {
   room: RoomState | null;
   friendList: FriendPresence[];
+  pendingRequests: FriendRequest[];
+  matchAbandoned: string | null;
   isConnected: boolean;
   isConnecting: boolean;
   createRoom: (config: RoomConfig, isPrivate: boolean) => void;
@@ -35,6 +38,7 @@ interface MultiplayerContextProps {
     requestId: string,
     action: "ACCEPT" | "DECLINE",
   ) => void;
+  clearMatchAbandoned: () => void;
 
   // Timer subscription details
   serverTimer: number;
@@ -65,6 +69,8 @@ export const MultiplayerProvider: React.FC<MultiplayerProviderProps> = ({
 }) => {
   const [room, setRoom] = useState<RoomState | null>(null);
   const [friendList, setFriendList] = useState<FriendPresence[]>([]);
+  const [pendingRequests, setPendingRequests] = useState<FriendRequest[]>([]);
+  const [matchAbandoned, setMatchAbandoned] = useState<string | null>(null);
   const [isConnected, setIsConnected] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
   const [serverTimer, setServerTimer] = useState(0);
@@ -197,6 +203,37 @@ export const MultiplayerProvider: React.FC<MultiplayerProviderProps> = ({
               list.push(payload);
               return list.sort((a, b) => a.username.localeCompare(b.username));
             });
+            break;
+
+          case WsEvents.FRIEND_REQUEST_RECEIVED:
+            setPendingRequests((prev) => {
+              // Deduplicate by requestId
+              if (prev.some((r) => r.requestId === payload.requestId)) return prev;
+              return [...prev, {
+                requestId: payload.requestId,
+                senderId: payload.senderId,
+                senderName: payload.senderName,
+                senderImage: payload.senderImage || "",
+              }];
+            });
+            break;
+
+          case WsEvents.PENDING_REQUESTS:
+            setPendingRequests(
+              (payload.requests || []).map((r: { requestId: string; senderId: string; senderName: string; senderImage: string }) => ({
+                requestId: r.requestId,
+                senderId: r.senderId,
+                senderName: r.senderName,
+                senderImage: r.senderImage || "",
+              })),
+            );
+            break;
+
+          case WsEvents.MATCH_ABANDONED:
+            // Keep the room reference so MultiplayerGame stays mounted to show the overlay.
+            // clearMatchAbandoned() will clear both state fields when user dismisses.
+            sessionStorage.removeItem("wherebear_active_room_code");
+            setMatchAbandoned(payload.reason || "Your opponent left the match.");
             break;
 
           case WsEvents.ROOM_DESTROYED:
@@ -371,15 +408,24 @@ export const MultiplayerProvider: React.FC<MultiplayerProviderProps> = ({
   const respondFriendRequest = useCallback(
     (requestId: string, action: "ACCEPT" | "DECLINE") => {
       sendMessage(WsEvents.FRIEND_REQUEST_RESPOND, { requestId, action });
+      // Optimistically remove the request so the UI clears immediately
+      setPendingRequests((prev) => prev.filter((r) => r.requestId !== requestId));
     },
     [sendMessage],
   );
+
+  const clearMatchAbandoned = useCallback(() => {
+    setMatchAbandoned(null);
+    setRoom(null);
+  }, []);
 
   return (
     <MultiplayerContext.Provider
       value={{
         room,
         friendList,
+        pendingRequests,
+        matchAbandoned,
         isConnected,
         isConnecting,
         createRoom,
@@ -393,6 +439,7 @@ export const MultiplayerProvider: React.FC<MultiplayerProviderProps> = ({
         submitGuess,
         sendFriendRequest,
         respondFriendRequest,
+        clearMatchAbandoned,
         serverTimer,
         registerTimerElement,
         currentUserId: userId || "",

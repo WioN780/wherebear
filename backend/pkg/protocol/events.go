@@ -29,6 +29,8 @@ const (
 	EventPresenceChange        = "PRESENCE_CHANGE"
 	EventFriendListUpdate      = "FRIEND_LIST_UPDATE"
 	EventFriendRequestReceived = "FRIEND_REQUEST_RECEIVED"
+	EventPendingRequests       = "PENDING_REQUESTS"
+	EventMatchAbandoned        = "MATCH_ABANDONED"
 	EventError                 = "ERROR"
 	EventSuccess               = "SUCCESS"
 	EventLeftConfirm           = "LEFT_CONFIRM"

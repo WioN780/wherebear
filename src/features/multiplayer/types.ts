@@ -67,6 +67,14 @@ export interface FriendPresence {
   isOnline: boolean;
 }
 
+// Incoming friend request (pending acceptance)
+export interface FriendRequest {
+  requestId: string;
+  senderId: string;
+  senderName: string;
+  senderImage: string;
+}
+
 // WebSocket Event Names. These must stay in lockstep with the Go backend's
 // pkg/protocol/events.go constants.
 export const WsEvents = {
@@ -93,6 +101,8 @@ export const WsEvents = {
   PRESENCE_CHANGE: "PRESENCE_CHANGE",
   FRIEND_REQUEST_RECEIVED: "FRIEND_REQUEST_RECEIVED",
   FRIEND_LIST_UPDATE: "FRIEND_LIST_UPDATE",
+  PENDING_REQUESTS: "PENDING_REQUESTS",
+  MATCH_ABANDONED: "MATCH_ABANDONED",
   ERROR: "ERROR",
   SUCCESS: "SUCCESS",
   LEFT_CONFIRM: "LEFT_CONFIRM",

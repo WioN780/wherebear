@@ -117,9 +117,20 @@ type PresenceChangePayload struct {
 
 // FriendRequestReceivedPayload notifies about an incoming friend request.
 type FriendRequestReceivedPayload struct {
+	RequestID   string `json:"requestId"`
 	SenderID    string `json:"senderId"`
 	SenderName  string `json:"senderName"`
 	SenderImage string `json:"senderImage"`
+}
+
+// PendingRequestsPayload sends all pending incoming friend requests on connect.
+type PendingRequestsPayload struct {
+	Requests []domain.PendingRequest `json:"requests"`
+}
+
+// MatchAbandonedPayload notifies the remaining player that their opponent left a quick match.
+type MatchAbandonedPayload struct {
+	Reason string `json:"reason"`
 }
 
 // RoundStartPayload announces the start of a new round.

@@ -34,7 +34,7 @@ import {
   MultiplayerProvider,
   useMultiplayer,
 } from "@/features/multiplayer/contexts/MultiplayerContext";
-import { MultiplayerGame } from "./MultiplayerGame";
+import { MultiplayerGame } from "@/features/multiplayer/components/MultiplayerGame";
 
 type AppSession = {
   user?: {

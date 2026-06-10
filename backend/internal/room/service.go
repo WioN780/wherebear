@@ -22,7 +22,8 @@ func NewService(manager *Manager, notifier domain.Notifier) *Service {
 }
 
 // Create initializes a new room with a host.
-func (s *Service) Create(ctx context.Context, hostID, username, image string, isPrivate bool, config domain.RoomConfig) (*domain.Room, error) {
+// isQuickMatch should be true for matchmaker-created rooms so they auto-start and abandon correctly.
+func (s *Service) Create(ctx context.Context, hostID, username, image string, isPrivate bool, isQuickMatch bool, config domain.RoomConfig) (*domain.Room, error) {
 	roomID := fmt.Sprintf("room_%d", time.Now().UnixNano())
 	var inviteCode string
 
@@ -57,6 +58,7 @@ func (s *Service) Create(ctx context.Context, hostID, username, image string, is
 		InviteCode:    inviteCode,
 		HostPlayerID:  hostID,
 		IsPrivate:     isPrivate,
+		IsQuickMatch:  isQuickMatch,
 		State:         domain.RoomStateLobby,
 		Config:        config,
 		Players:       []*domain.Player{hostPlayer},
@@ -129,6 +131,13 @@ func (s *Service) Leave(ctx context.Context, roomID, userID string) error {
 	}
 
 	room.Mu.Lock()
+
+	// Capture name before removal for potential abandon message
+	leaverName := userID
+	if p := room.FindPlayer(userID); p != nil {
+		leaverName = p.Username
+	}
+
 	removed := room.RemovePlayer(userID)
 	if !removed {
 		room.Mu.Unlock()
@@ -139,6 +148,25 @@ func (s *Service) Leave(ctx context.Context, roomID, userID string) error {
 		room.StopTimer()
 		room.Mu.Unlock()
 		s.manager.DeleteRoom(roomID)
+		return nil
+	}
+
+	// Quick-match mid-game: notify remaining players and end the room.
+	if room.IsQuickMatch && room.State != domain.RoomStateLobby {
+		var onlineIDs []string
+		for _, player := range room.Players {
+			if player.IsOnline {
+				onlineIDs = append(onlineIDs, player.ID)
+			}
+		}
+		room.StopTimer()
+		room.Mu.Unlock()
+		s.manager.DeleteRoom(roomID)
+		reason := leaverName + " left the match."
+		s.notifier.SendToUser(userID, protocol.EventLeftConfirm, protocol.LeftConfirmPayload{})
+		for _, id := range onlineIDs {
+			s.notifier.SendToUser(id, protocol.EventMatchAbandoned, protocol.MatchAbandonedPayload{Reason: reason})
+		}
 		return nil
 	}
 
@@ -262,21 +290,33 @@ func (s *Service) HandleDisconnect(ctx context.Context, roomID, userID string) e
 		return protocol.ErrPlayerNotFound
 	}
 
+	leaverName := p.Username
 	p.IsOnline = false
 
-	// Check if any online player remains in the room
-	hasOnline := false
+	// Collect remaining online players
+	var onlineIDs []string
 	for _, player := range room.Players {
 		if player.IsOnline {
-			hasOnline = true
-			break
+			onlineIDs = append(onlineIDs, player.ID)
 		}
 	}
 
-	if !hasOnline {
+	if len(onlineIDs) == 0 {
 		room.StopTimer()
 		room.Mu.Unlock()
 		s.manager.DeleteRoom(roomID)
+		return nil
+	}
+
+	// Quick-match mid-game: notify remaining player and end the room.
+	if room.IsQuickMatch && room.State != domain.RoomStateLobby {
+		room.StopTimer()
+		room.Mu.Unlock()
+		s.manager.DeleteRoom(roomID)
+		reason := leaverName + " disconnected from the match."
+		for _, id := range onlineIDs {
+			s.notifier.SendToUser(id, protocol.EventMatchAbandoned, protocol.MatchAbandonedPayload{Reason: reason})
+		}
 		return nil
 	}
 

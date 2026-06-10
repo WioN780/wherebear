@@ -60,7 +60,7 @@ func (s *Service) SendFriendRequest(ctx context.Context, senderID, receiverEmail
 	}
 
 	// 3. Create pending friendship
-	_, err = s.friendRepo.Create(ctx, senderID, receiver.ID)
+	friendship, err := s.friendRepo.Create(ctx, senderID, receiver.ID)
 	if err != nil {
 		return err
 	}
@@ -70,11 +70,12 @@ func (s *Service) SendFriendRequest(ctx context.Context, senderID, receiverEmail
 		Message: "Friend request sent!",
 	})
 
-	// 5. Notify the receiver if they are currently online
+	// 5. Notify the receiver if they are currently online (include RequestID so they can respond)
 	if s.tracker.IsUserOnline(receiver.ID) {
 		sender, err := s.userRepo.GetByID(ctx, senderID)
 		if err == nil {
 			s.notifier.SendToUser(receiver.ID, protocol.EventFriendRequestReceived, protocol.FriendRequestReceivedPayload{
+				RequestID:   friendship.ID,
 				SenderID:    sender.ID,
 				SenderName:  sender.Username,
 				SenderImage: sender.Image,

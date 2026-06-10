@@ -96,7 +96,7 @@ func (h *Handler) route(c *Connection, user *AuthUser, env protocol.Envelope) {
 			RoundDuration: p.Config.RoundDuration,
 			Country:       p.Config.Country,
 		}
-		r, err := h.roomSvc.Create(ctx, user.ID, user.Username, user.Image, p.IsPrivate, config)
+		r, err := h.roomSvc.Create(ctx, user.ID, user.Username, user.Image, p.IsPrivate, false, config)
 		if err != nil {
 			sendError(c, err.Error())
 			return
@@ -250,12 +250,25 @@ func (h *Handler) route(c *Connection, user *AuthUser, env protocol.Envelope) {
 		}
 		h.tracker.AssociateRoom(c, r.ID)
 
-		// Quick-match rooms behave exactly like hosted rooms: every player lands
-		// in the lobby and waits for the host to start the match. There is no
-		// auto-start. roomSvc.Join already broadcasts to existing members when a
-		// second player arrives, but the room creator (the first matcher) needs
-		// this initial broadcast to render their lobby.
-		go h.roomSvc.BroadcastRoomState(r)
+		// Auto-start as soon as both players are matched. We check under a read
+		// lock so we see the current player count without racing against Join's
+		// broadcast.
+		r.Mu.RLock()
+		playerCount := len(r.Players)
+		roomState := r.State
+		hostID := r.HostPlayerID
+		r.Mu.RUnlock()
+
+		if roomState == domain.RoomStateLobby && playerCount >= 2 {
+			go func() {
+				if startErr := h.gameSvc.Start(context.Background(), r.ID, hostID); startErr != nil {
+					log.Printf("[Handler] Quick-match auto-start failed for room %s: %v", r.ID, startErr)
+				}
+			}()
+		} else {
+			// First player waiting — send lobby state so they see the waiting screen.
+			go h.roomSvc.BroadcastRoomState(r)
+		}
 
 	default:
 		sendError(c, "Unknown event type: "+env.Type)
